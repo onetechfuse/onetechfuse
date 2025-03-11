@@ -8,6 +8,10 @@ import {
   Paper,
   styled,
   useTheme,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -204,12 +208,12 @@ const Home = () => {
       </Box>
 
       {/* Services Section */}
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 4, sm: 6, md: 8 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 5, md: 6 } }}>
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: '1.75rem', md: '2.25rem' },
+              fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.25rem' },
               fontWeight: 700,
               mb: 2,
             }}
@@ -223,85 +227,63 @@ const Home = () => {
               maxWidth: '700px',
               mx: 'auto',
               fontWeight: 400,
-              fontSize: { xs: '1rem', md: '1.1rem' },
+              fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
+              px: { xs: 2, sm: 0 },
             }}
           >
             Choose from our comprehensive range of technology solutions designed to drive your business forward
           </Typography>
         </Box>
 
-        <Grid container spacing={3}>
-          {services.map((service) => (
-            <Grid item xs={12} sm={6} md={4} key={service.title}>
-              <StyledPaper onClick={() => handleServiceClick(service.title)}>
-                <IconWrapper className="icon-wrapper">
+        <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
+          {services.map((service, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Paper
+                sx={{
+                  p: { xs: 2, sm: 3 },
+                  height: '100%',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 12px 32px rgba(92, 98, 249, 0.15)',
+                  },
+                }}
+                onClick={() => handleServiceClick(service.title)}
+              >
+                <Box sx={{ mb: 2, color: 'primary.main' }}>
                   {service.icon}
-                </IconWrapper>
-                <Typography 
-                  variant="h6" 
-                  gutterBottom 
-                  className="service-title"
-                  sx={{ 
-                    fontWeight: 600,
-                    fontSize: '1.1rem',
-                    mb: 1
-                  }}
-                >
+                </Box>
+                <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
                   {service.title}
                 </Typography>
-                <Typography 
-                  color="text.secondary"
-                  className="service-description" 
-                  sx={{ 
-                    mb: 2,
-                    fontSize: '0.9rem',
-                    lineHeight: 1.5
-                  }}
-                >
+                <Typography color="text.secondary" sx={{ mb: 2 }}>
                   {service.description}
                 </Typography>
-                <Box sx={{ mt: 'auto' }}>
-                  {service.features.map((feature, index) => (
-                    <Box 
-                      key={index} 
-                      sx={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        mb: 0.75
-                      }}
-                    >
-                      <CheckCircleIcon 
-                        className="feature-icon"
-                        sx={{ 
-                          mr: 1, 
-                          color: 'primary.main', 
-                          fontSize: '1rem' 
-                        }} 
-                      />
-                      <Typography 
-                        variant="body2"
-                        className="feature-text"
-                        sx={{ fontSize: '0.85rem' }}
-                      >
-                        {feature}
-                      </Typography>
-                    </Box>
+                <List>
+                  {service.features.map((feature, idx) => (
+                    <ListItem key={idx} sx={{ px: 0, py: 0.5 }}>
+                      <ListItemIcon sx={{ minWidth: 36 }}>
+                        <CheckCircleIcon color="primary" sx={{ fontSize: 20 }} />
+                      </ListItemIcon>
+                      <ListItemText primary={feature} />
+                    </ListItem>
                   ))}
-                </Box>
-              </StyledPaper>
+                </List>
+              </Paper>
             </Grid>
           ))}
         </Grid>
       </Container>
 
       {/* Why Choose Us Section */}
-      <Box sx={{ bgcolor: 'background.default', py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: 'background.default', py: { xs: 6, sm: 8, md: 12 } }}>
         <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center', mb: 8 }}>
+          <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 8 } }}>
             <Typography
               variant="h2"
               sx={{
-                fontSize: { xs: '2rem', md: '2.75rem' },
+                fontSize: { xs: '1.75rem', sm: '2rem', md: '2.75rem' },
                 fontWeight: 700,
                 mb: 2,
               }}
@@ -315,21 +297,36 @@ const Home = () => {
                 maxWidth: '800px',
                 mx: 'auto',
                 fontWeight: 400,
+                fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
+                px: { xs: 2, sm: 0 },
               }}
             >
               Partner with us for innovative solutions and exceptional results
             </Typography>
           </Box>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={{ xs: 3, sm: 4 }}>
             {whyChooseUs.map((item, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
                 <Box sx={{ textAlign: 'center' }}>
                   {item.icon}
-                  <Typography variant="h5" sx={{ my: 2, fontWeight: 600 }}>
+                  <Typography 
+                    variant="h5" 
+                    sx={{ 
+                      my: 2, 
+                      fontWeight: 600,
+                      fontSize: { xs: '1.25rem', sm: '1.5rem' },
+                    }}
+                  >
                     {item.title}
                   </Typography>
-                  <Typography color="text.secondary">
+                  <Typography 
+                    color="text.secondary"
+                    sx={{
+                      fontSize: { xs: '0.9rem', sm: '1rem' },
+                      px: { xs: 2, sm: 0 },
+                    }}
+                  >
                     {item.description}
                   </Typography>
                 </Box>
@@ -340,10 +337,10 @@ const Home = () => {
       </Box>
 
       {/* Stats Section */}
-      <Box sx={{ py: { xs: 8, md: 12 } }}>
+      <Box sx={{ py: { xs: 6, sm: 8, md: 12 } }}>
         <Container maxWidth="lg">
-          <Grid container spacing={4}>
-            <Grid item xs={6} md={3}>
+          <Grid container spacing={{ xs: 4, sm: 6, md: 4 }}>
+            <Grid item xs={6} sm={6} md={3}>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography 
                   variant="h2" 
@@ -351,16 +348,23 @@ const Home = () => {
                   sx={{ 
                     fontWeight: 800,
                     mb: 1,
+                    fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
                   }}
                 >
                   10+
                 </Typography>
-                <Typography variant="h6" color="text.secondary">
+                <Typography 
+                  variant="h6" 
+                  color="text.secondary"
+                  sx={{
+                    fontSize: { xs: '0.9rem', sm: '1rem', md: '1.25rem' },
+                  }}
+                >
                   Years Experience
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={6} md={3}>
+            <Grid item xs={6} sm={6} md={3}>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography 
                   variant="h2" 
@@ -377,7 +381,7 @@ const Home = () => {
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={6} md={3}>
+            <Grid item xs={6} sm={6} md={3}>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography 
                   variant="h2" 
@@ -394,7 +398,7 @@ const Home = () => {
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={6} md={3}>
+            <Grid item xs={6} sm={6} md={3}>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography 
                   variant="h2" 
@@ -416,12 +420,12 @@ const Home = () => {
       </Box>
 
       {/* CTA Section */}
-      <Container maxWidth="lg" sx={{ py: { xs: 8, md: 12 } }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 6, sm: 8, md: 12 } }}>
         <Box
           sx={{
             bgcolor: 'primary.main',
             color: 'white',
-            p: { xs: 4, md: 8 },
+            p: { xs: 3, sm: 4, md: 8 },
             borderRadius: 4,
             textAlign: 'center',
             position: 'relative',
@@ -435,6 +439,7 @@ const Home = () => {
               mb: 2,
               position: 'relative',
               zIndex: 1,
+              fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' },
             }}
           >
             Ready to Transform Your Business?
@@ -448,6 +453,8 @@ const Home = () => {
               mx: 'auto',
               position: 'relative',
               zIndex: 1,
+              fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
+              px: { xs: 2, sm: 0 },
             }}
           >
             Let's discuss how we can help you achieve your technology goals
@@ -458,16 +465,15 @@ const Home = () => {
             size="large"
             onClick={() => navigate('/contact')}
             sx={{
-              px: 6,
-              py: 2,
-              fontSize: '1.1rem',
+              px: { xs: 3, sm: 4 },
+              py: { xs: 1, sm: 1.5 },
+              fontSize: { xs: '0.9rem', sm: '1rem' },
               fontWeight: 600,
               borderRadius: 2,
-              position: 'relative',
-              zIndex: 1,
+              boxShadow: '0 8px 24px rgba(92, 98, 249, 0.3)',
             }}
           >
-            Get Started Today
+            Schedule Free Consultation
           </Button>
         </Box>
       </Container>

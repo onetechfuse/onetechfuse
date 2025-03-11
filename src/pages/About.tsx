@@ -36,20 +36,20 @@ const About = () => {
 
   const teamMembers = [
     {
-      name: 'John Smith',
-      role: 'CEO & Founder',
+      name: 'Nitesh',
+      role: 'Co-founder',
       image: 'https://via.placeholder.com/150',
-      bio: 'Tech visionary with 15+ years of experience in digital transformation.',
+      bio: 'Tech visionary with expertise in digital transformation and innovative solutions.',
     },
     {
-      name: 'Sarah Johnson',
-      role: 'CTO',
+      name: 'Shekhar',
+      role: 'Co-founder',
       image: 'https://via.placeholder.com/150',
       bio: 'Expert in cloud architecture and emerging technologies.',
     },
     {
-      name: 'Michael Chen',
-      role: 'Head of Development',
+      name: 'Shivam',
+      role: 'Co-founder',
       image: 'https://via.placeholder.com/150',
       bio: 'Full-stack developer specializing in scalable solutions.',
     },
@@ -120,34 +120,13 @@ const About = () => {
         </Container>
       </Box>
 
-      {/* Company Values Section */}
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
-        <Grid container spacing={4}>
-          {values.map((value, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <StyledPaper>
-                <Box sx={{ mb: 2 }}>
-                  {value.icon}
-                </Box>
-                <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
-                  {value.title}
-                </Typography>
-                <Typography color="text.secondary">
-                  {value.description}
-                </Typography>
-              </StyledPaper>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-
       {/* Team Section */}
-      <Box sx={{ bgcolor: 'background.default', py: { xs: 6, md: 8 } }}>
+      <Box sx={{ bgcolor: 'background.default', py: { xs: 4, sm: 6, md: 8 } }}>
         <Container maxWidth="lg">
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: '1.75rem', md: '2.25rem' },
+              fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.25rem' },
               fontWeight: 700,
               mb: 1,
               textAlign: 'center',
@@ -159,40 +138,62 @@ const About = () => {
             sx={{
               color: 'text.secondary',
               textAlign: 'center',
-              mb: 6,
+              mb: { xs: 4, sm: 5, md: 6 },
               maxWidth: '700px',
               mx: 'auto',
+              px: { xs: 2, sm: 0 },
+              fontSize: { xs: '0.9rem', sm: '1rem' },
             }}
           >
             Our diverse team of experts brings together years of experience in technology and innovation
           </Typography>
 
-          <Grid container spacing={4}>
+          <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
             {teamMembers.map((member, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <Box sx={{ textAlign: 'center' }}>
+                <Box 
+                  sx={{ 
+                    textAlign: 'center',
+                    mb: { xs: 3, sm: 0 },
+                  }}
+                >
                   <Avatar
                     src={member.image}
                     sx={{
-                      width: 120,
-                      height: 120,
+                      width: { xs: 100, sm: 120 },
+                      height: { xs: 100, sm: 120 },
                       mx: 'auto',
                       mb: 2,
                       border: '4px solid',
                       borderColor: 'primary.main',
                     }}
                   />
-                  <Typography variant="h6" gutterBottom>
+                  <Typography 
+                    variant="h6" 
+                    gutterBottom
+                    sx={{
+                      fontSize: { xs: '1.1rem', sm: '1.25rem' },
+                    }}
+                  >
                     {member.name}
                   </Typography>
                   <Typography
                     color="primary"
                     gutterBottom
-                    sx={{ fontWeight: 500 }}
+                    sx={{ 
+                      fontWeight: 500,
+                      fontSize: { xs: '0.9rem', sm: '1rem' },
+                    }}
                   >
                     {member.role}
                   </Typography>
-                  <Typography color="text.secondary" sx={{ fontSize: '0.9rem' }}>
+                  <Typography 
+                    color="text.secondary" 
+                    sx={{ 
+                      fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                      px: { xs: 2, sm: 0 },
+                    }}
+                  >
                     {member.bio}
                   </Typography>
                 </Box>
@@ -202,21 +203,75 @@ const About = () => {
         </Container>
       </Box>
 
+      {/* Values Section */}
+      <Container maxWidth="lg" sx={{ py: { xs: 4, sm: 6, md: 8 } }}>
+        <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
+          {values.map((value, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <StyledPaper>
+                <Box sx={{ mb: 2 }}>
+                  {React.cloneElement(value.icon, {
+                    sx: { 
+                      fontSize: { xs: 32, sm: 36, md: 40 },
+                      color: 'primary.main',
+                    }
+                  })}
+                </Box>
+                <Typography 
+                  variant="h5" 
+                  gutterBottom 
+                  sx={{ 
+                    fontWeight: 600,
+                    fontSize: { xs: '1.25rem', sm: '1.5rem' },
+                  }}
+                >
+                  {value.title}
+                </Typography>
+                <Typography 
+                  color="text.secondary"
+                  sx={{
+                    fontSize: { xs: '0.9rem', sm: '1rem' },
+                  }}
+                >
+                  {value.description}
+                </Typography>
+              </StyledPaper>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
       {/* CTA Section */}
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 4, sm: 6, md: 8 } }}>
         <Box
           sx={{
             bgcolor: 'primary.main',
             color: 'white',
-            p: { xs: 4, md: 6 },
+            p: { xs: 3, sm: 4, md: 6 },
             borderRadius: 4,
             textAlign: 'center',
           }}
         >
-          <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
+          <Typography 
+            variant="h3" 
+            sx={{ 
+              fontWeight: 700, 
+              mb: 2,
+              fontSize: { xs: '1.5rem', sm: '2rem', md: '2.5rem' },
+            }}
+          >
             Join Our Journey
           </Typography>
-          <Typography sx={{ mb: 4, opacity: 0.9, maxWidth: '600px', mx: 'auto' }}>
+          <Typography 
+            sx={{ 
+              mb: 4, 
+              opacity: 0.9, 
+              maxWidth: '600px', 
+              mx: 'auto',
+              fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
+              px: { xs: 2, sm: 0 },
+            }}
+          >
             Be part of our mission to transform the digital landscape. We're always looking for talented individuals to join our team.
           </Typography>
           <Button
@@ -225,9 +280,9 @@ const About = () => {
             size="large"
             onClick={() => navigate('/careers')}
             sx={{
-              px: 4,
-              py: 1.5,
-              fontSize: '1rem',
+              px: { xs: 3, sm: 4 },
+              py: { xs: 1, sm: 1.5 },
+              fontSize: { xs: '0.9rem', sm: '1rem' },
               fontWeight: 600,
               borderRadius: 2,
             }}

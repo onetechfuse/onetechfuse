@@ -27,34 +27,61 @@ const theme = createTheme({
     fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontWeight: 800,
-      fontSize: '3.5rem',
+      fontSize: '2.5rem',
+      '@media (min-width:600px)': {
+        fontSize: '3rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '3.5rem',
+      },
       lineHeight: 1.2,
       letterSpacing: '-0.02em',
     },
     h2: {
       fontWeight: 700,
-      fontSize: '2.75rem',
+      fontSize: '2rem',
+      '@media (min-width:600px)': {
+        fontSize: '2.25rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '2.75rem',
+      },
       lineHeight: 1.3,
       letterSpacing: '-0.01em',
     },
     h3: {
       fontWeight: 700,
-      fontSize: '2.25rem',
+      fontSize: '1.75rem',
+      '@media (min-width:600px)': {
+        fontSize: '2rem',
+      },
+      '@media (min-width:900px)': {
+        fontSize: '2.25rem',
+      },
       lineHeight: 1.3,
     },
     h4: {
       fontWeight: 600,
-      fontSize: '1.75rem',
+      fontSize: '1.5rem',
+      '@media (min-width:900px)': {
+        fontSize: '1.75rem',
+      },
       lineHeight: 1.4,
     },
     h5: {
       fontWeight: 600,
-      fontSize: '1.5rem',
+      fontSize: '1.25rem',
+      '@media (min-width:900px)': {
+        fontSize: '1.5rem',
+      },
       lineHeight: 1.4,
     },
     h6: {
       fontWeight: 500,
-      fontSize: '1.25rem',
+      fontSize: '1.1rem',
+      '@media (min-width:900px)': {
+        fontSize: '1.25rem',
+      },
       lineHeight: 1.4,
     },
     body1: {
