@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import sgMail from '@sendgrid/mail';
 
-// Initialize SendGrid with your API key
+//   Initialize SendGrid with your API key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
