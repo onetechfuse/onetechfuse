@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, CssBaseline, Box } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 
 // Components
@@ -14,38 +15,39 @@ import About from './pages/About';
 import Blog from './pages/Blog';
 import Careers from './pages/Careers';
 import WebDevelopment from './pages/services/WebDevelopment';
+import MobileDevelopment from './pages/services/MobileDevelopment';
+import SalesforceSolutions from './pages/services/SalesforceSolutions';
+import Services from './pages/Services';
+import ApiDevelopment from './pages/services/ApiDevelopment';
+import EcommerceSolutions from './pages/services/EcommerceSolutions';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-          <Navbar />
-          <Box component="main" sx={{ flexGrow: 1 }}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/careers" element={<Careers />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/services/web-development" element={<WebDevelopment />} />
-              <Route path="/services/salesforce-solutions" element={<div>Coming Soon</div>} />
-              <Route path="/services/mobile-development" element={<div>Coming Soon</div>} />
-              <Route path="/services/ecommerce-solutions" element={<div>Coming Soon</div>} />
-              <Route path="/services/database-solutions" element={<div>Coming Soon</div>} />
-              <Route path="/services/api-development" element={<div>Coming Soon</div>} />
-              {/* Industry Routes */}
-              <Route path="/industries/financial-services" element={<div>Coming Soon</div>} />
-              <Route path="/industries/information-technology" element={<div>Coming Soon</div>} />
-              <Route path="/industries/manufacturing" element={<div>Coming Soon</div>} />
-              <Route path="/industries/nonprofit" element={<div>Coming Soon</div>} />
-              <Route path="/industries/retail" element={<div>Coming Soon</div>} />
-              <Route path="/industries/healthcare" element={<div>Coming Soon</div>} />
-            </Routes>
-          </Box>
-          <Footer />
-        </Box>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/web-development" element={<WebDevelopment />} />
+          <Route path="/services/mobile-development" element={<MobileDevelopment />} />
+          <Route path="/services/salesforce-solutions" element={<SalesforceSolutions />} />
+          <Route path="/services/api-development" element={<ApiDevelopment />} />
+          <Route path="/services/ecommerce-solutions" element={<EcommerceSolutions />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
+          {/* Industry Routes */}
+          <Route path="/industries/financial-services" element={<div>Coming Soon</div>} />
+          <Route path="/industries/information-technology" element={<div>Coming Soon</div>} />
+          <Route path="/industries/manufacturing" element={<div>Coming Soon</div>} />
+          <Route path="/industries/nonprofit" element={<div>Coming Soon</div>} />
+          <Route path="/industries/retail" element={<div>Coming Soon</div>} />
+          <Route path="/industries/healthcare" element={<div>Coming Soon</div>} />
+        </Routes>
+        <Footer />
       </Router>
     </ThemeProvider>
   );

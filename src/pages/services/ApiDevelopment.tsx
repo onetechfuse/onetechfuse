@@ -14,111 +14,110 @@ import {
 } from '@mui/material';
 import {
   CheckCircle,
-  Code,
+  Api,
   Security,
   Speed,
   Support,
-  Devices,
   Cloud,
-  Brush,
+  Code,
   Storage,
-  Web,
-  Api,
-  ShoppingCart,
+  Link,
   Analytics,
+  BugReport,
+  Update,
 } from '@mui/icons-material';
 
-const WebDevelopment: React.FC = () => {
+const ApiDevelopment: React.FC = () => {
   const theme = useTheme();
 
   const features = [
     {
-      title: 'Frontend Development',
-      description: 'Modern, responsive web applications built with cutting-edge technologies.',
+      title: 'RESTful API Development',
+      description: 'Design and implement scalable RESTful APIs following best practices.',
+      icon: <Api />,
+      benefits: [
+        'API architecture design',
+        'Resource modeling',
+        'Versioning strategies',
+        'Rate limiting',
+        'Caching implementation',
+        'Documentation (Swagger/OpenAPI)',
+      ],
+    },
+    {
+      title: 'GraphQL Development',
+      description: 'Build flexible and efficient GraphQL APIs for modern applications.',
       icon: <Code />,
       benefits: [
-        'React/Next.js development',
-        'Responsive design',
+        'Schema design',
+        'Resolver implementation',
+        'Query optimization',
+        'Subscriptions',
+        'Federation',
+        'Performance tuning',
+      ],
+    },
+    {
+      title: 'API Integration',
+      description: 'Seamlessly integrate third-party APIs and services.',
+      icon: <Link />,
+      benefits: [
+        'OAuth implementation',
+        'API key management',
+        'Webhook setup',
+        'Error handling',
+        'Retry mechanisms',
+        'Circuit breakers',
+      ],
+    },
+    {
+      title: 'API Security',
+      description: 'Implement robust security measures to protect your APIs.',
+      icon: <Security />,
+      benefits: [
+        'Authentication',
+        'Authorization',
+        'JWT implementation',
+        'API key security',
+        'Rate limiting',
+        'Input validation',
+      ],
+    },
+    {
+      title: 'API Testing',
+      description: 'Comprehensive testing solutions for API reliability.',
+      icon: <BugReport />,
+      benefits: [
+        'Unit testing',
+        'Integration testing',
+        'Load testing',
+        'Security testing',
+        'Performance testing',
+        'API monitoring',
+      ],
+    },
+    {
+      title: 'API Maintenance',
+      description: 'Ongoing support and maintenance for your APIs.',
+      icon: <Update />,
+      benefits: [
+        'Version management',
         'Performance optimization',
-        'Cross-browser compatibility',
-        'Modern UI frameworks',
-        'Progressive Web Apps (PWA)',
-      ],
-    },
-    {
-      title: 'Backend Development',
-      description: 'Scalable and secure server-side solutions for your web applications.',
-      icon: <Storage />,
-      benefits: [
-        'Node.js/Python development',
-        'API development',
-        'Database design',
-        'Server optimization',
-        'Microservices architecture',
-        'Cloud integration',
-      ],
-    },
-    {
-      title: 'UI/UX Design',
-      description: 'User-centered design that creates engaging and intuitive experiences.',
-      icon: <Brush />,
-      benefits: [
-        'Wireframing',
-        'Prototyping',
-        'User testing',
-        'Design system implementation',
-        'Accessibility compliance',
-        'Mobile-first approach',
-      ],
-    },
-    {
-      title: 'Cloud Solutions',
-      description: 'Cloud-native applications and infrastructure setup.',
-      icon: <Cloud />,
-      benefits: [
-        'AWS/Azure/GCP setup',
-        'Cloud architecture',
-        'DevOps implementation',
-        'Scalability solutions',
-        'Container orchestration',
-        'Serverless applications',
-      ],
-    },
-    {
-      title: 'E-Commerce Development',
-      description: 'Custom e-commerce solutions that drive sales and growth.',
-      icon: <ShoppingCart />,
-      benefits: [
-        'Online store setup',
-        'Payment integration',
-        'Inventory management',
-        'Order processing',
-        'Multi-vendor marketplace',
-        'Analytics integration',
-      ],
-    },
-    {
-      title: 'Web Maintenance',
-      description: 'Ongoing support and maintenance to keep your website running smoothly.',
-      icon: <Support />,
-      benefits: [
-        'Bug fixes',
-        'Performance monitoring',
         'Security updates',
-        'Content updates',
-        'SEO optimization',
-        'Analytics tracking',
+        'Documentation updates',
+        'Monitoring setup',
+        'Incident response',
       ],
     },
   ];
 
   const technologies = [
-    { name: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Material-UI', 'Tailwind CSS'] },
-    { name: 'Backend', items: ['Node.js', 'Python', 'Java', 'PHP', 'Ruby on Rails'] },
-    { name: 'Databases', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Elasticsearch'] },
-    { name: 'Cloud', items: ['AWS', 'Azure', 'Google Cloud', 'DigitalOcean', 'Heroku'] },
-    { name: 'DevOps', items: ['Docker', 'Kubernetes', 'Jenkins', 'GitLab CI', 'GitHub Actions'] },
-    { name: 'Testing', items: ['Jest', 'React Testing Library', 'Cypress', 'Selenium', 'JUnit'] },
+    { name: 'API Development', items: ['Node.js', 'Python', 'Java', 'Go', 'Ruby'] },
+    { name: 'Frameworks', items: ['Express', 'FastAPI', 'Spring Boot', 'Gin', 'Rails'] },
+    { name: 'API Standards', items: ['REST', 'GraphQL', 'gRPC', 'SOAP', 'WebSocket'] },
+    { name: 'Security', items: ['OAuth', 'JWT', 'API Keys', 'OIDC', 'SAML'] },
+    { name: 'Testing', items: ['Postman', 'Jest', 'Pytest', 'JUnit', 'Cypress'] },
+    { name: 'Monitoring', items: ['Prometheus', 'Grafana', 'New Relic', 'Datadog', 'ELK'] },
   ];
 
   return (
@@ -158,7 +157,7 @@ const WebDevelopment: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Web Development
+                API Development
               </Typography>
               <Typography
                 variant="h5"
@@ -167,14 +166,14 @@ const WebDevelopment: React.FC = () => {
                   opacity: 0.9,
                 }}
               >
-                Create powerful web applications that drive your business forward with cutting-edge technologies and best practices.
+                Build robust and scalable APIs that power your applications with modern technologies and best practices.
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
               <Box
                 component="img"
-                src="/images/web-hero.svg"
-                alt="Web Development"
+                src="/images/api-hero.svg"
+                alt="API Development"
                 sx={{
                   width: '100%',
                   maxWidth: 500,
@@ -199,7 +198,7 @@ const WebDevelopment: React.FC = () => {
             fontWeight: 700,
           }}
         >
-          Our Web Development Services
+          Our API Development Services
         </Typography>
         <Grid container spacing={4}>
           {features.map((feature, index) => (
@@ -331,7 +330,7 @@ const WebDevelopment: React.FC = () => {
             fontWeight: 700,
           }}
         >
-          Why Choose Our Web Development Services?
+          Why Choose Our API Development Services?
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
@@ -341,7 +340,7 @@ const WebDevelopment: React.FC = () => {
                 Fast Development
               </Typography>
               <Typography color="text.secondary">
-                Rapid development cycles with modern tools and frameworks for quick time-to-market.
+                Rapid API development with modern tools and frameworks for quick deployment.
               </Typography>
             </Box>
           </Grid>
@@ -349,10 +348,10 @@ const WebDevelopment: React.FC = () => {
             <Box sx={{ textAlign: 'center' }}>
               <Security sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
               <Typography variant="h6" gutterBottom>
-                Secure Applications
+                Secure APIs
               </Typography>
               <Typography color="text.secondary">
-                Built-in security features and best practices to protect user data and privacy.
+                Enterprise-grade security features to protect your API endpoints and data.
               </Typography>
             </Box>
           </Grid>
@@ -363,7 +362,7 @@ const WebDevelopment: React.FC = () => {
                 Ongoing Support
               </Typography>
               <Typography color="text.secondary">
-                Continuous support and maintenance to keep your website running smoothly.
+                Continuous support and maintenance to keep your APIs running smoothly.
               </Typography>
             </Box>
           </Grid>
@@ -373,4 +372,4 @@ const WebDevelopment: React.FC = () => {
   );
 };
 
-export default WebDevelopment; 
+export default ApiDevelopment; 

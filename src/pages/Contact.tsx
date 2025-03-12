@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Box,
   Container,
@@ -8,41 +7,67 @@ import {
   TextField,
   Button,
   Paper,
-  useTheme,
-  MenuItem,
+  IconButton,
   Snackbar,
   Alert,
   CircularProgress,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  SelectChangeEvent,
 } from '@mui/material';
 import {
-  Phone as PhoneIcon,
-  Email as EmailIcon,
-  LocationOn as LocationIcon,
+  LocationOn,
+  Phone,
+  Email,
+  Facebook,
+  Twitter,
+  LinkedIn,
+  Instagram,
 } from '@mui/icons-material';
-import { emailjsConfig } from '../config/emailjs';
+import emailjs from '@emailjs/browser';
 
-const Contact = () => {
-  const theme = useTheme();
-  const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
+const services = [
+  { value: 'web-development', label: 'Web Development' },
+  { value: 'mobile-development', label: 'Mobile Development' },
+  { value: 'salesforce-solutions', label: 'Salesforce Solutions' },
+  { value: 'api-development', label: 'API Development' },
+  { value: 'ecommerce-solutions', label: 'E-commerce Solutions' },
+  { value: 'other', label: 'Other' },
+];
+
+const Contact: React.FC = () => {
+  const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
+    from_name: '',
+    from_email: '',
+    subject: '',
     message: '',
   });
+  const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: '',
     severity: 'success' as 'success' | 'error',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  useEffect(() => {
+    emailjs.init('4b3wxKNKDeQ5ncNCT');
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  const handleSelectChange = (e: SelectChangeEvent<string>) => {
+    setFormData((prev) => ({
+      ...prev,
+      subject: e.target.value,
     }));
   };
 
@@ -51,28 +76,27 @@ const Contact = () => {
     setLoading(true);
 
     try {
+      if (!form.current) return;
+
       const result = await emailjs.sendForm(
-        emailjsConfig.serviceId,
-        emailjsConfig.templateId,
-        formRef.current!,
-        emailjsConfig.publicKey
+        'service_t0qndxt',
+        'template_zjl8xvf',
+        form.current,
+        '4b3wxKNKDeQ5ncNCT'
       );
 
-      console.log('Email sent successfully:', result.text);
-      setSnackbar({
-        open: true,
-        message: 'Thank you for your message. We will get back to you soon!',
-        severity: 'success',
-      });
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: '',
-      });
+      if (result.status === 200) {
+        setSnackbar({
+          open: true,
+          message: 'Message sent successfully! We will get back to you soon.',
+          severity: 'success',
+        });
+        setFormData({ from_name: '', from_email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
-      console.error('Failed to send email:', error);
+      console.error('EmailJS Error:', error);
       setSnackbar({
         open: true,
         message: 'Failed to send message. Please try again later.',
@@ -83,279 +107,240 @@ const Contact = () => {
     }
   };
 
-  const services = [
-    'Web Development',
-    'Salesforce Solutions',
-    'Mobile Development',
-    'E-Commerce Solutions',
-    'Database Solutions',
-    'API Development',
-  ];
-
-  const contactInfo = [
-    {
-      icon: <PhoneIcon />,
-      title: 'Phone',
-      content: '+91 (999) 999-9999',
-      link: 'tel:+919999999999',
-    },
-    {
-      icon: <EmailIcon />,
-      title: 'Email',
-      content: 'niteshsaini02@gmail.com',
-      link: 'mailto:niteshsaini02@gmail.com',
-    },
-    {
-      icon: <LocationIcon />,
-      title: 'Location',
-      content: 'Bangalore, India',
-      link: 'https://maps.google.com',
-    },
-  ];
+  const handleCloseSnackbar = () => {
+    setSnackbar((prev) => ({ ...prev, open: false }));
+  };
 
   return (
     <Box>
       {/* Hero Section */}
       <Box
         sx={{
-          background: 'linear-gradient(135deg, #2B2D42 0%, #5C62F9 100%)',
+          bgcolor: 'primary.main',
           color: 'white',
-          pt: { xs: 8, md: 12 },
-          pb: { xs: 6, md: 8 },
+          py: { xs: 8, md: 12 },
+          position: 'relative',
+          overflow: 'hidden',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: 'url("/images/pattern.svg")',
+            opacity: 0.1,
+            zIndex: 1,
+          },
         }}
       >
-        <Container maxWidth="lg">
-          <Typography 
-            variant="h1" 
-            sx={{ 
-              fontSize: { xs: '2rem', md: '2.75rem' },
-              fontWeight: 800,
-              mb: 2,
-              textAlign: 'center',
-            }}
-          >
-            Get in Touch
-          </Typography>
-          <Typography 
-            variant="h5"
-            sx={{ 
-              maxWidth: '800px',
-              opacity: 0.9,
-              fontSize: { xs: '1rem', md: '1.25rem' },
-              lineHeight: 1.5,
-              textAlign: 'center',
-              mx: 'auto',
-            }}
-          >
-            Let's discuss how we can help transform your business through innovative technology solutions
-          </Typography>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
+          <Grid container spacing={4} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <Typography
+                variant="h1"
+                sx={{
+                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  fontWeight: 700,
+                  mb: 2,
+                  background: 'linear-gradient(45deg, #fff 30%, #e0e0e0 90%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                Get in Touch
+              </Typography>
+              <Typography
+                variant="h5"
+                sx={{
+                  mb: 4,
+                  opacity: 0.9,
+                }}
+              >
+                Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Box
+                component="img"
+                src="/images/contact-hero.svg"
+                alt="Contact Us"
+                sx={{
+                  width: '100%',
+                  maxWidth: 500,
+                  display: { xs: 'none', md: 'block' },
+                  mx: 'auto',
+                  filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.2))',
+                }}
+              />
+            </Grid>
+          </Grid>
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ py: { xs: 4, sm: 6, md: 8 } }}>
-        <Grid container spacing={{ xs: 3, sm: 4, md: 6 }}>
+      {/* Contact Form Section */}
+      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
+        <Grid container spacing={6}>
           {/* Contact Information */}
           <Grid item xs={12} md={4}>
-            <Box sx={{ position: 'sticky', top: 100 }}>
-              <Typography 
-                variant="h4" 
-                sx={{
-                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
-                  fontWeight: 700,
-                  mb: 2,
-                }}
-              >
+            <Paper
+              elevation={3}
+              sx={{
+                p: 4,
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 3,
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                },
+              }}
+            >
+              <Typography variant="h4" gutterBottom>
                 Contact Information
               </Typography>
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  mb: 4, 
-                  color: 'text.secondary',
-                  fontSize: { xs: '0.9rem', sm: '1rem' },
-                }}
-              >
-                Reach out to us through any of these channels or fill out the form.
-                We're here to help!
-              </Typography>
-              
-              <Box sx={{ mt: 4 }}>
-                {contactInfo.map((info, index) => (
-                  <Paper
-                    key={index}
-                    sx={{
-                      p: { xs: 2, sm: 3 },
-                      mb: 2,
-                      display: 'flex',
-                      alignItems: 'center',
-                      transition: 'all 0.3s ease-in-out',
-                      '&:hover': {
-                        transform: 'translateY(-4px)',
-                        boxShadow: '0 8px 24px rgba(92, 98, 249, 0.15)',
-                      },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        mr: 2,
-                        p: 1,
-                        borderRadius: 1,
-                        bgcolor: 'secondary.light',
-                        color: 'white',
-                      }}
-                    >
-                      {info.icon}
-                    </Box>
-                    <Box>
-                      <Typography 
-                        variant="h6" 
-                        sx={{
-                          fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
-                          fontWeight: 600,
-                          mb: 0.5,
-                        }}
-                      >
-                        {info.title}
-                      </Typography>
-                      <Typography
-                        component="a"
-                        href={info.link}
-                        sx={{
-                          color: 'text.secondary',
-                          textDecoration: 'none',
-                          fontSize: { xs: '0.9rem', sm: '1rem' },
-                          '&:hover': {
-                            color: 'secondary.main',
-                          },
-                        }}
-                      >
-                        {info.content}
-                      </Typography>
-                    </Box>
-                  </Paper>
-                ))}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <LocationOn color="primary" />
+                <Box>
+                  <Typography variant="h6">Address</Typography>
+                  <Typography color="text.secondary">
+                    123 Business Street, Suite 100<br />
+                    New York, NY 10001
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Phone color="primary" />
+                <Box>
+                  <Typography variant="h6">Phone</Typography>
+                  <Typography color="text.secondary">+1 (555) 123-4567</Typography>
+                </Box>
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Email color="primary" />
+                <Box>
+                  <Typography variant="h6">Email</Typography>
+                  <Typography color="text.secondary">contact@onetechfuse.com</Typography>
+                </Box>
+              </Box>
+              <Box sx={{ mt: 'auto' }}>
+                <Typography variant="h6" gutterBottom>
+                  Follow Us
+                </Typography>
+                <Box sx={{ display: 'flex', gap: 1 }}>
+                  <IconButton color="primary">
+                    <Facebook />
+                  </IconButton>
+                  <IconButton color="primary">
+                    <Twitter />
+                  </IconButton>
+                  <IconButton color="primary">
+                    <LinkedIn />
+                  </IconButton>
+                  <IconButton color="primary">
+                    <Instagram />
+                  </IconButton>
+                </Box>
+              </Box>
+            </Paper>
           </Grid>
 
           {/* Contact Form */}
           <Grid item xs={12} md={8}>
-            <Paper
-              elevation={0}
-              sx={{
-                p: { xs: 3, sm: 4 },
-                bgcolor: 'background.paper',
-                borderRadius: 2,
-                border: '1px solid',
-                borderColor: 'divider',
+            <Paper 
+              elevation={3} 
+              sx={{ 
+                p: 4,
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                },
               }}
             >
-              <Typography 
-                variant="h4" 
-                sx={{
-                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
-                  fontWeight: 700,
-                  mb: 2,
-                }}
-              >
+              <Typography variant="h4" gutterBottom>
                 Send us a Message
               </Typography>
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  mb: 4, 
-                  color: 'text.secondary',
-                  fontSize: { xs: '0.9rem', sm: '1rem' },
-                }}
-              >
-                Fill out the form below and we'll get back to you as soon as possible.
-              </Typography>
-
-              <form ref={formRef} onSubmit={handleSubmit}>
+              <form ref={form} onSubmit={handleSubmit}>
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={6}>
                     <TextField
                       fullWidth
-                      label="Your Name"
-                      name="name"
-                      value={formData.name}
+                      label="Name"
+                      name="from_name"
+                      value={formData.from_name}
                       onChange={handleChange}
                       required
-                      variant="outlined"
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <TextField
                       fullWidth
-                      label="Email Address"
-                      name="email"
+                      label="Email"
+                      name="from_email"
                       type="email"
-                      value={formData.email}
+                      value={formData.from_email}
                       onChange={handleChange}
                       required
-                      variant="outlined"
                     />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label="Phone Number"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      select
-                      label="Service Interested In"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      required
-                      variant="outlined"
-                    >
-                      {services.map((service) => (
-                        <MenuItem key={service} value={service}>
-                          {service}
-                        </MenuItem>
-                      ))}
-                    </TextField>
+                  <Grid item xs={12}>
+                    <FormControl fullWidth required>
+                      <InputLabel>Subject</InputLabel>
+                      <Select
+                        value={formData.subject}
+                        onChange={handleSelectChange}
+                        label="Subject"
+                        name="subject"
+                      >
+                        {services.map((service) => (
+                          <MenuItem key={service.value} value={service.value}>
+                            {service.label}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
                   </Grid>
                   <Grid item xs={12}>
                     <TextField
                       fullWidth
+                      label="Message"
+                      name="message"
                       multiline
                       rows={4}
-                      label="Your Message"
-                      name="message"
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      variant="outlined"
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <Button
                       type="submit"
                       variant="contained"
-                      color="secondary"
                       size="large"
+                      fullWidth
                       disabled={loading}
-                      sx={{
-                        px: { xs: 3, sm: 4 },
-                        py: { xs: 1, sm: 1.5 },
-                        fontSize: { xs: '0.9rem', sm: '1rem' },
+                      sx={{ 
+                        py: 1.5,
+                        px: 4,
+                        borderRadius: 2,
+                        textTransform: 'none',
+                        fontSize: '1.1rem',
                         fontWeight: 600,
+                        boxShadow: '0 4px 14px 0 rgba(33, 150, 243, 0.39)',
+                        background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+                        '&:hover': {
+                          background: 'linear-gradient(45deg, #1976D2 30%, #1CB5E0 90%)',
+                          boxShadow: '0 6px 20px 0 rgba(33, 150, 243, 0.5)',
+                          transform: 'translateY(-2px)',
+                        },
+                        '&:active': {
+                          transform: 'translateY(0)',
+                        },
+                        transition: 'all 0.3s ease-in-out',
                       }}
                     >
-                      {loading ? (
-                        <CircularProgress size={24} color="inherit" />
-                      ) : (
-                        'Send Message'
-                      )}
+                      {loading ? <CircularProgress size={24} /> : 'Send Message'}
                     </Button>
                   </Grid>
                 </Grid>
@@ -365,13 +350,15 @@ const Contact = () => {
         </Grid>
       </Container>
 
+      {/* Snackbar for notifications */}
       <Snackbar
         open={snackbar.open}
         autoHideDuration={6000}
-        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <Alert
-          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          onClose={handleCloseSnackbar}
           severity={snackbar.severity}
           sx={{ width: '100%' }}
         >

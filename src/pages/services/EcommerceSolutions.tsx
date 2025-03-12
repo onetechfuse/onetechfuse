@@ -14,111 +14,111 @@ import {
 } from '@mui/material';
 import {
   CheckCircle,
-  Code,
+  ShoppingCart,
   Security,
   Speed,
   Support,
-  Devices,
   Cloud,
-  Brush,
-  Storage,
-  Web,
-  Api,
-  ShoppingCart,
+  Payment,
   Analytics,
+  Inventory,
+  LocalShipping,
+  Brush,
+  BugReport,
+  Update,
 } from '@mui/icons-material';
 
-const WebDevelopment: React.FC = () => {
+const EcommerceSolutions: React.FC = () => {
   const theme = useTheme();
 
   const features = [
     {
-      title: 'Frontend Development',
-      description: 'Modern, responsive web applications built with cutting-edge technologies.',
-      icon: <Code />,
+      title: 'E-commerce Platform Development',
+      description: 'Custom e-commerce solutions built with modern technologies.',
+      icon: <ShoppingCart />,
       benefits: [
-        'React/Next.js development',
-        'Responsive design',
-        'Performance optimization',
-        'Cross-browser compatibility',
-        'Modern UI frameworks',
-        'Progressive Web Apps (PWA)',
+        'Custom store development',
+        'Multi-vendor marketplace',
+        'Subscription models',
+        'Digital products',
+        'Membership systems',
+        'Multi-currency support',
       ],
     },
     {
-      title: 'Backend Development',
-      description: 'Scalable and secure server-side solutions for your web applications.',
-      icon: <Storage />,
+      title: 'Payment Integration',
+      description: 'Seamless payment processing with multiple payment gateways.',
+      icon: <Payment />,
       benefits: [
-        'Node.js/Python development',
-        'API development',
-        'Database design',
-        'Server optimization',
-        'Microservices architecture',
-        'Cloud integration',
+        'Payment gateway integration',
+        'Multiple payment methods',
+        'Secure transactions',
+        'Subscription billing',
+        'Refund management',
+        'Fraud prevention',
+      ],
+    },
+    {
+      title: 'Inventory Management',
+      description: 'Comprehensive inventory and order management solutions.',
+      icon: <Inventory />,
+      benefits: [
+        'Stock tracking',
+        'Order management',
+        'Warehouse integration',
+        'Barcode scanning',
+        'Low stock alerts',
+        'Bulk operations',
+      ],
+    },
+    {
+      title: 'Shipping Integration',
+      description: 'Automated shipping and delivery solutions.',
+      icon: <LocalShipping />,
+      benefits: [
+        'Carrier integration',
+        'Shipping rate calculation',
+        'Tracking management',
+        'Label generation',
+        'International shipping',
+        'Delivery scheduling',
       ],
     },
     {
       title: 'UI/UX Design',
-      description: 'User-centered design that creates engaging and intuitive experiences.',
+      description: 'User-centered design for optimal shopping experience.',
       icon: <Brush />,
       benefits: [
-        'Wireframing',
-        'Prototyping',
+        'Responsive design',
+        'Mobile optimization',
         'User testing',
-        'Design system implementation',
+        'Conversion optimization',
         'Accessibility compliance',
-        'Mobile-first approach',
+        'Brand consistency',
       ],
     },
     {
-      title: 'Cloud Solutions',
-      description: 'Cloud-native applications and infrastructure setup.',
-      icon: <Cloud />,
+      title: 'Analytics & Reporting',
+      description: 'Data-driven insights for business growth.',
+      icon: <Analytics />,
       benefits: [
-        'AWS/Azure/GCP setup',
-        'Cloud architecture',
-        'DevOps implementation',
-        'Scalability solutions',
-        'Container orchestration',
-        'Serverless applications',
-      ],
-    },
-    {
-      title: 'E-Commerce Development',
-      description: 'Custom e-commerce solutions that drive sales and growth.',
-      icon: <ShoppingCart />,
-      benefits: [
-        'Online store setup',
-        'Payment integration',
-        'Inventory management',
-        'Order processing',
-        'Multi-vendor marketplace',
-        'Analytics integration',
-      ],
-    },
-    {
-      title: 'Web Maintenance',
-      description: 'Ongoing support and maintenance to keep your website running smoothly.',
-      icon: <Support />,
-      benefits: [
-        'Bug fixes',
-        'Performance monitoring',
-        'Security updates',
-        'Content updates',
-        'SEO optimization',
-        'Analytics tracking',
+        'Sales analytics',
+        'Customer insights',
+        'Inventory reports',
+        'Performance metrics',
+        'Custom dashboards',
+        'Export capabilities',
       ],
     },
   ];
 
   const technologies = [
-    { name: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Material-UI', 'Tailwind CSS'] },
-    { name: 'Backend', items: ['Node.js', 'Python', 'Java', 'PHP', 'Ruby on Rails'] },
-    { name: 'Databases', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Elasticsearch'] },
-    { name: 'Cloud', items: ['AWS', 'Azure', 'Google Cloud', 'DigitalOcean', 'Heroku'] },
-    { name: 'DevOps', items: ['Docker', 'Kubernetes', 'Jenkins', 'GitLab CI', 'GitHub Actions'] },
-    { name: 'Testing', items: ['Jest', 'React Testing Library', 'Cypress', 'Selenium', 'JUnit'] },
+    { name: 'Platforms', items: ['Shopify', 'WooCommerce', 'Magento', 'BigCommerce', 'Custom Solutions'] },
+    { name: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript'] },
+    { name: 'Backend', items: ['Node.js', 'Python', 'PHP', 'Java', 'Ruby on Rails'] },
+    { name: 'Payment', items: ['Stripe', 'PayPal', 'Square', 'Authorize.net', 'Razorpay'] },
+    { name: 'Shipping', items: ['ShipStation', 'Shippo', 'EasyPost', 'FedEx', 'UPS'] },
+    { name: 'Analytics', items: ['Google Analytics', 'Mixpanel', 'Hotjar', 'Segment', 'Custom Reports'] },
   ];
 
   return (
@@ -158,7 +158,7 @@ const WebDevelopment: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Web Development
+                E-commerce Solutions
               </Typography>
               <Typography
                 variant="h5"
@@ -167,14 +167,14 @@ const WebDevelopment: React.FC = () => {
                   opacity: 0.9,
                 }}
               >
-                Create powerful web applications that drive your business forward with cutting-edge technologies and best practices.
+                Create powerful online stores that drive sales and growth with cutting-edge e-commerce solutions.
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
               <Box
                 component="img"
-                src="/images/web-hero.svg"
-                alt="Web Development"
+                src="/images/ecommerce-hero.svg"
+                alt="E-commerce Solutions"
                 sx={{
                   width: '100%',
                   maxWidth: 500,
@@ -199,7 +199,7 @@ const WebDevelopment: React.FC = () => {
             fontWeight: 700,
           }}
         >
-          Our Web Development Services
+          Our E-commerce Solutions
         </Typography>
         <Grid container spacing={4}>
           {features.map((feature, index) => (
@@ -331,7 +331,7 @@ const WebDevelopment: React.FC = () => {
             fontWeight: 700,
           }}
         >
-          Why Choose Our Web Development Services?
+          Why Choose Our E-commerce Solutions?
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
@@ -341,7 +341,7 @@ const WebDevelopment: React.FC = () => {
                 Fast Development
               </Typography>
               <Typography color="text.secondary">
-                Rapid development cycles with modern tools and frameworks for quick time-to-market.
+                Quick deployment of e-commerce solutions with minimal disruption to your business.
               </Typography>
             </Box>
           </Grid>
@@ -349,10 +349,10 @@ const WebDevelopment: React.FC = () => {
             <Box sx={{ textAlign: 'center' }}>
               <Security sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
               <Typography variant="h6" gutterBottom>
-                Secure Applications
+                Secure Transactions
               </Typography>
               <Typography color="text.secondary">
-                Built-in security features and best practices to protect user data and privacy.
+                Enterprise-grade security features to protect customer data and transactions.
               </Typography>
             </Box>
           </Grid>
@@ -360,10 +360,10 @@ const WebDevelopment: React.FC = () => {
             <Box sx={{ textAlign: 'center' }}>
               <Support sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
               <Typography variant="h6" gutterBottom>
-                Ongoing Support
+                24/7 Support
               </Typography>
               <Typography color="text.secondary">
-                Continuous support and maintenance to keep your website running smoothly.
+                Round-the-clock support to keep your online store running smoothly.
               </Typography>
             </Box>
           </Grid>
@@ -373,4 +373,4 @@ const WebDevelopment: React.FC = () => {
   );
 };
 
-export default WebDevelopment; 
+export default EcommerceSolutions; 

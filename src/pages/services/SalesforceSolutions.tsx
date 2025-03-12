@@ -14,111 +14,112 @@ import {
 } from '@mui/material';
 import {
   CheckCircle,
-  Code,
+  Cloud,
+  Settings,
+  Link,
+  Analytics,
   Security,
   Speed,
   Support,
-  Devices,
-  Cloud,
   Brush,
   Storage,
-  Web,
   Api,
   ShoppingCart,
-  Analytics,
+  BugReport,
+  Update,
 } from '@mui/icons-material';
 
-const WebDevelopment: React.FC = () => {
+const SalesforceSolutions: React.FC = () => {
   const theme = useTheme();
 
   const features = [
     {
-      title: 'Frontend Development',
-      description: 'Modern, responsive web applications built with cutting-edge technologies.',
-      icon: <Code />,
-      benefits: [
-        'React/Next.js development',
-        'Responsive design',
-        'Performance optimization',
-        'Cross-browser compatibility',
-        'Modern UI frameworks',
-        'Progressive Web Apps (PWA)',
-      ],
-    },
-    {
-      title: 'Backend Development',
-      description: 'Scalable and secure server-side solutions for your web applications.',
-      icon: <Storage />,
-      benefits: [
-        'Node.js/Python development',
-        'API development',
-        'Database design',
-        'Server optimization',
-        'Microservices architecture',
-        'Cloud integration',
-      ],
-    },
-    {
-      title: 'UI/UX Design',
-      description: 'User-centered design that creates engaging and intuitive experiences.',
-      icon: <Brush />,
-      benefits: [
-        'Wireframing',
-        'Prototyping',
-        'User testing',
-        'Design system implementation',
-        'Accessibility compliance',
-        'Mobile-first approach',
-      ],
-    },
-    {
-      title: 'Cloud Solutions',
-      description: 'Cloud-native applications and infrastructure setup.',
+      title: 'Sales Cloud Implementation',
+      description: 'Optimize your sales processes with Salesforce Sales Cloud solutions.',
       icon: <Cloud />,
       benefits: [
-        'AWS/Azure/GCP setup',
-        'Cloud architecture',
-        'DevOps implementation',
-        'Scalability solutions',
-        'Container orchestration',
-        'Serverless applications',
+        'Lead management',
+        'Opportunity tracking',
+        'Sales forecasting',
+        'Pipeline management',
+        'Territory management',
+        'Sales analytics',
       ],
     },
     {
-      title: 'E-Commerce Development',
-      description: 'Custom e-commerce solutions that drive sales and growth.',
-      icon: <ShoppingCart />,
-      benefits: [
-        'Online store setup',
-        'Payment integration',
-        'Inventory management',
-        'Order processing',
-        'Multi-vendor marketplace',
-        'Analytics integration',
-      ],
-    },
-    {
-      title: 'Web Maintenance',
-      description: 'Ongoing support and maintenance to keep your website running smoothly.',
+      title: 'Service Cloud Solutions',
+      description: 'Deliver exceptional customer service with Salesforce Service Cloud.',
       icon: <Support />,
       benefits: [
-        'Bug fixes',
-        'Performance monitoring',
-        'Security updates',
-        'Content updates',
-        'SEO optimization',
-        'Analytics tracking',
+        'Case management',
+        'Knowledge base',
+        'Omni-channel support',
+        'Customer portal',
+        'Service analytics',
+        'Field service',
+      ],
+    },
+    {
+      title: 'Custom Development',
+      description: 'Tailored Salesforce solutions to meet your specific business needs.',
+      icon: <Settings />,
+      benefits: [
+        'Custom objects',
+        'Apex development',
+        'Lightning components',
+        'Visualforce pages',
+        'Process automation',
+        'Custom integrations',
+      ],
+    },
+    {
+      title: 'Integration Services',
+      description: 'Seamlessly connect Salesforce with your existing systems.',
+      icon: <Link />,
+      benefits: [
+        'API integration',
+        'Data migration',
+        'Third-party apps',
+        'Web services',
+        'Real-time sync',
+        'ETL processes',
+      ],
+    },
+    {
+      title: 'Analytics & Reporting',
+      description: 'Powerful analytics and reporting solutions for data-driven decisions.',
+      icon: <Analytics />,
+      benefits: [
+        'Custom dashboards',
+        'Advanced reports',
+        'Data visualization',
+        'Predictive analytics',
+        'KPI tracking',
+        'Business intelligence',
+      ],
+    },
+    {
+      title: 'Security & Compliance',
+      description: 'Enterprise-grade security and compliance solutions.',
+      icon: <Security />,
+      benefits: [
+        'Access control',
+        'Data encryption',
+        'Audit trails',
+        'Compliance reporting',
+        'Security monitoring',
+        'Backup solutions',
       ],
     },
   ];
 
   const technologies = [
-    { name: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Material-UI', 'Tailwind CSS'] },
-    { name: 'Backend', items: ['Node.js', 'Python', 'Java', 'PHP', 'Ruby on Rails'] },
-    { name: 'Databases', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Elasticsearch'] },
-    { name: 'Cloud', items: ['AWS', 'Azure', 'Google Cloud', 'DigitalOcean', 'Heroku'] },
-    { name: 'DevOps', items: ['Docker', 'Kubernetes', 'Jenkins', 'GitLab CI', 'GitHub Actions'] },
-    { name: 'Testing', items: ['Jest', 'React Testing Library', 'Cypress', 'Selenium', 'JUnit'] },
+    { name: 'Salesforce Core', items: ['Sales Cloud', 'Service Cloud', 'Marketing Cloud', 'Commerce Cloud', 'Experience Cloud'] },
+    { name: 'Development', items: ['Apex', 'Lightning', 'Visualforce', 'LWC', 'Heroku'] },
+    { name: 'Integration', items: ['REST API', 'SOAP API', 'Bulk API', 'Heroku', 'MuleSoft'] },
+    { name: 'Analytics', items: ['Tableau', 'Einstein Analytics', 'Reports', 'Dashboards', 'Wave Analytics'] },
+    { name: 'Security', items: ['Shield', 'Identity', 'Access Control', 'Encryption', 'Compliance'] },
+    { name: 'DevOps', items: ['DX', 'Git', 'Jenkins', 'Copado', 'Gearset'] },
   ];
 
   return (
@@ -158,7 +159,7 @@ const WebDevelopment: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Web Development
+                Salesforce Solutions
               </Typography>
               <Typography
                 variant="h5"
@@ -167,14 +168,14 @@ const WebDevelopment: React.FC = () => {
                   opacity: 0.9,
                 }}
               >
-                Create powerful web applications that drive your business forward with cutting-edge technologies and best practices.
+                Transform your business with comprehensive Salesforce solutions that drive growth and efficiency.
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
               <Box
                 component="img"
-                src="/images/web-hero.svg"
-                alt="Web Development"
+                src="/images/salesforce-hero.svg"
+                alt="Salesforce Solutions"
                 sx={{
                   width: '100%',
                   maxWidth: 500,
@@ -199,7 +200,7 @@ const WebDevelopment: React.FC = () => {
             fontWeight: 700,
           }}
         >
-          Our Web Development Services
+          Our Salesforce Solutions
         </Typography>
         <Grid container spacing={4}>
           {features.map((feature, index) => (
@@ -331,17 +332,17 @@ const WebDevelopment: React.FC = () => {
             fontWeight: 700,
           }}
         >
-          Why Choose Our Web Development Services?
+          Why Choose Our Salesforce Solutions?
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
             <Box sx={{ textAlign: 'center' }}>
               <Speed sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
               <Typography variant="h6" gutterBottom>
-                Fast Development
+                Rapid Implementation
               </Typography>
               <Typography color="text.secondary">
-                Rapid development cycles with modern tools and frameworks for quick time-to-market.
+                Quick deployment of Salesforce solutions with minimal disruption to your business.
               </Typography>
             </Box>
           </Grid>
@@ -349,10 +350,10 @@ const WebDevelopment: React.FC = () => {
             <Box sx={{ textAlign: 'center' }}>
               <Security sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
               <Typography variant="h6" gutterBottom>
-                Secure Applications
+                Enterprise Security
               </Typography>
               <Typography color="text.secondary">
-                Built-in security features and best practices to protect user data and privacy.
+                Enterprise-grade security and compliance features to protect your data.
               </Typography>
             </Box>
           </Grid>
@@ -360,10 +361,10 @@ const WebDevelopment: React.FC = () => {
             <Box sx={{ textAlign: 'center' }}>
               <Support sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
               <Typography variant="h6" gutterBottom>
-                Ongoing Support
+                24/7 Support
               </Typography>
               <Typography color="text.secondary">
-                Continuous support and maintenance to keep your website running smoothly.
+                Round-the-clock support and maintenance to keep your Salesforce instance running smoothly.
               </Typography>
             </Box>
           </Grid>
@@ -373,4 +374,4 @@ const WebDevelopment: React.FC = () => {
   );
 };
 
-export default WebDevelopment; 
+export default SalesforceSolutions; 

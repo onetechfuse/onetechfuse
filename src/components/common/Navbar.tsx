@@ -50,6 +50,26 @@ const Navbar = () => {
     { name: 'Healthcare', path: '/industries/healthcare' },
   ];
 
+  const menuItems = [
+    { text: 'Home', path: '/' },
+    { text: 'About', path: '/about' },
+    {
+      text: 'Services',
+      path: '/services',
+      submenu: [
+        { text: 'Web Development', path: '/services/web-development' },
+        { text: 'Mobile Development', path: '/services/mobile-development' },
+        { text: 'Salesforce Solutions', path: '/services/salesforce-solutions' },
+        { text: 'E-Commerce Solutions', path: '/services/ecommerce-solutions' },
+        { text: 'Database Solutions', path: '/services/database-solutions' },
+        { text: 'API Development', path: '/services/api-development' },
+      ],
+    },
+    { text: 'Careers', path: '/careers' },
+    { text: 'Blog', path: '/blog' },
+    { text: 'Contact', path: '/contact' },
+  ];
+
   const handleMobileMenuClick = (path: string) => {
     setMobileMenuOpen(false);
     // If you're using react-router, you can add navigation here
@@ -280,10 +300,22 @@ const Navbar = () => {
                 variant="outlined"
                 sx={{ 
                   ml: 2,
+                  px: 3,
+                  py: 1,
+                  borderRadius: 2,
+                  textTransform: 'none',
+                  fontSize: '1rem',
+                  fontWeight: 600,
                   borderColor: 'currentColor',
+                  transition: 'all 0.3s ease-in-out',
                   '&:hover': {
                     borderColor: theme.palette.secondary.light,
                     color: theme.palette.secondary.light,
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 4px 14px 0 rgba(33, 150, 243, 0.39)',
+                  },
+                  '&:active': {
+                    transform: 'translateY(0)',
                   },
                 }}
               >

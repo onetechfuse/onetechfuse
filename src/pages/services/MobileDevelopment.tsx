@@ -14,6 +14,8 @@ import {
 } from '@mui/material';
 import {
   CheckCircle,
+  PhoneAndroid,
+  PhoneIphone,
   Code,
   Security,
   Speed,
@@ -22,103 +24,103 @@ import {
   Cloud,
   Brush,
   Storage,
-  Web,
   Api,
-  ShoppingCart,
   Analytics,
+  BugReport,
+  Update,
 } from '@mui/icons-material';
 
-const WebDevelopment: React.FC = () => {
+const MobileDevelopment: React.FC = () => {
   const theme = useTheme();
 
   const features = [
     {
-      title: 'Frontend Development',
-      description: 'Modern, responsive web applications built with cutting-edge technologies.',
-      icon: <Code />,
+      title: 'iOS Development',
+      description: 'Native iOS applications built with Swift and SwiftUI for optimal performance.',
+      icon: <PhoneIphone />,
       benefits: [
-        'React/Next.js development',
-        'Responsive design',
-        'Performance optimization',
-        'Cross-browser compatibility',
-        'Modern UI frameworks',
-        'Progressive Web Apps (PWA)',
+        'Swift/SwiftUI development',
+        'iOS app store submission',
+        'iPad optimization',
+        'Apple Watch integration',
+        'Push notifications',
+        'In-app purchases',
       ],
     },
     {
-      title: 'Backend Development',
-      description: 'Scalable and secure server-side solutions for your web applications.',
-      icon: <Storage />,
+      title: 'Android Development',
+      description: 'Native Android applications using Kotlin and Jetpack Compose.',
+      icon: <PhoneAndroid />,
       benefits: [
-        'Node.js/Python development',
-        'API development',
-        'Database design',
-        'Server optimization',
-        'Microservices architecture',
-        'Cloud integration',
+        'Kotlin development',
+        'Play Store submission',
+        'Material Design 3',
+        'Android TV support',
+        'Background services',
+        'App bundles',
+      ],
+    },
+    {
+      title: 'Cross-Platform Development',
+      description: 'Efficient development for both iOS and Android using modern frameworks.',
+      icon: <Devices />,
+      benefits: [
+        'React Native',
+        'Flutter development',
+        'Single codebase',
+        'Native performance',
+        'Hot reloading',
+        'Code sharing',
+      ],
+    },
+    {
+      title: 'Backend Integration',
+      description: 'Seamless integration with cloud services and APIs.',
+      icon: <Cloud />,
+      benefits: [
+        'RESTful APIs',
+        'GraphQL integration',
+        'Real-time updates',
+        'Offline support',
+        'Data synchronization',
+        'Cloud storage',
       ],
     },
     {
       title: 'UI/UX Design',
-      description: 'User-centered design that creates engaging and intuitive experiences.',
+      description: 'User-centered mobile design that creates engaging experiences.',
       icon: <Brush />,
       benefits: [
-        'Wireframing',
-        'Prototyping',
+        'Mobile-first design',
+        'Gesture interfaces',
+        'Accessibility',
         'User testing',
-        'Design system implementation',
-        'Accessibility compliance',
-        'Mobile-first approach',
+        'Prototyping',
+        'Design systems',
       ],
     },
     {
-      title: 'Cloud Solutions',
-      description: 'Cloud-native applications and infrastructure setup.',
-      icon: <Cloud />,
-      benefits: [
-        'AWS/Azure/GCP setup',
-        'Cloud architecture',
-        'DevOps implementation',
-        'Scalability solutions',
-        'Container orchestration',
-        'Serverless applications',
-      ],
-    },
-    {
-      title: 'E-Commerce Development',
-      description: 'Custom e-commerce solutions that drive sales and growth.',
-      icon: <ShoppingCart />,
-      benefits: [
-        'Online store setup',
-        'Payment integration',
-        'Inventory management',
-        'Order processing',
-        'Multi-vendor marketplace',
-        'Analytics integration',
-      ],
-    },
-    {
-      title: 'Web Maintenance',
-      description: 'Ongoing support and maintenance to keep your website running smoothly.',
-      icon: <Support />,
+      title: 'App Maintenance',
+      description: 'Continuous support and updates to keep your app running smoothly.',
+      icon: <Update />,
       benefits: [
         'Bug fixes',
-        'Performance monitoring',
-        'Security updates',
-        'Content updates',
-        'SEO optimization',
+        'Performance optimization',
+        'OS updates',
+        'Security patches',
         'Analytics tracking',
+        'User feedback',
       ],
     },
   ];
 
   const technologies = [
-    { name: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Material-UI', 'Tailwind CSS'] },
-    { name: 'Backend', items: ['Node.js', 'Python', 'Java', 'PHP', 'Ruby on Rails'] },
-    { name: 'Databases', items: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Elasticsearch'] },
-    { name: 'Cloud', items: ['AWS', 'Azure', 'Google Cloud', 'DigitalOcean', 'Heroku'] },
-    { name: 'DevOps', items: ['Docker', 'Kubernetes', 'Jenkins', 'GitLab CI', 'GitHub Actions'] },
-    { name: 'Testing', items: ['Jest', 'React Testing Library', 'Cypress', 'Selenium', 'JUnit'] },
+    { name: 'iOS', items: ['Swift', 'SwiftUI', 'UIKit', 'Core Data', 'CloudKit'] },
+    { name: 'Android', items: ['Kotlin', 'Jetpack Compose', 'Room', 'WorkManager', 'Firebase'] },
+    { name: 'Cross-Platform', items: ['React Native', 'Flutter', 'Xamarin', 'Ionic', 'Cordova'] },
+    { name: 'Backend', items: ['Node.js', 'Firebase', 'AWS', 'Google Cloud', 'Azure'] },
+    { name: 'Testing', items: ['XCTest', 'Espresso', 'Jest', 'Detox', 'Appium'] },
+    { name: 'DevOps', items: ['Fastlane', 'Bitrise', 'Jenkins', 'GitHub Actions', 'CircleCI'] },
   ];
 
   return (
@@ -158,7 +160,7 @@ const WebDevelopment: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Web Development
+                Mobile Development
               </Typography>
               <Typography
                 variant="h5"
@@ -167,14 +169,14 @@ const WebDevelopment: React.FC = () => {
                   opacity: 0.9,
                 }}
               >
-                Create powerful web applications that drive your business forward with cutting-edge technologies and best practices.
+                Create powerful mobile applications that engage users and drive business growth with cutting-edge technologies.
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
               <Box
                 component="img"
-                src="/images/web-hero.svg"
-                alt="Web Development"
+                src="/images/mobile-hero.svg"
+                alt="Mobile Development"
                 sx={{
                   width: '100%',
                   maxWidth: 500,
@@ -199,7 +201,7 @@ const WebDevelopment: React.FC = () => {
             fontWeight: 700,
           }}
         >
-          Our Web Development Services
+          Our Mobile Development Services
         </Typography>
         <Grid container spacing={4}>
           {features.map((feature, index) => (
@@ -331,7 +333,7 @@ const WebDevelopment: React.FC = () => {
             fontWeight: 700,
           }}
         >
-          Why Choose Our Web Development Services?
+          Why Choose Our Mobile Development Services?
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
@@ -363,7 +365,7 @@ const WebDevelopment: React.FC = () => {
                 Ongoing Support
               </Typography>
               <Typography color="text.secondary">
-                Continuous support and maintenance to keep your website running smoothly.
+                Continuous support and maintenance to keep your app running smoothly.
               </Typography>
             </Box>
           </Grid>
@@ -373,4 +375,4 @@ const WebDevelopment: React.FC = () => {
   );
 };
 
-export default WebDevelopment; 
+export default MobileDevelopment; 

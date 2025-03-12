@@ -4,7 +4,7 @@
   "outputDirectory": "build",
   "github": {
     "enabled": true,
-    "silent": true
+    "silent": false
   },
   "git": {
     "deploymentEnabled": {

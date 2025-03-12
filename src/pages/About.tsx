@@ -52,13 +52,7 @@ const About = () => {
       role: 'Co-founder',
       image: 'https://via.placeholder.com/150',
       bio: 'Full-stack developer specializing in scalable solutions.',
-    },
-    {
-      name: 'Emily Brown',
-      role: 'Product Manager',
-      image: 'https://via.placeholder.com/150',
-      bio: 'Experienced in leading innovative tech projects.',
-    },
+    }
   ];
 
   const values = [
