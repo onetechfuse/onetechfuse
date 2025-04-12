@@ -12,6 +12,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Card,
+  CardContent,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -27,6 +29,12 @@ import {
   Speed as SpeedIcon,
   Security as SecurityIcon,
   Psychology as PsychologyIcon,
+  AccountBalance as FinanceIcon,
+  LocalHospital as HealthcareIcon,
+  Store as RetailIcon,
+  School as EducationIcon,
+  Factory as ManufacturingIcon,
+  Business as BusinessIcon,
 } from '@mui/icons-material';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -39,27 +47,17 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
   transition: 'all 0.3s ease-in-out',
   borderRadius: theme.spacing(2),
   border: '1px solid rgba(0, 0, 0, 0.05)',
-  background: `linear-gradient(135deg, ${theme.palette.background.paper} 0%, ${theme.palette.grey[50]} 100%)`,
+  background: '#FFFFFF',
   '&:hover': {
     transform: 'translateY(-8px)',
-    boxShadow: '0 10px 40px rgba(92, 98, 249, 0.2)',
+    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
     borderColor: theme.palette.secondary.main,
-    background: `linear-gradient(135deg, ${theme.palette.secondary.light} 0%, ${theme.palette.primary.light} 100%)`,
     '& .icon-wrapper': {
       background: theme.palette.secondary.main,
       color: '#fff',
     },
     '& .service-title': {
-      color: '#fff',
-    },
-    '& .service-description': {
-      color: 'rgba(255, 255, 255, 0.9)',
-    },
-    '& .feature-text': {
-      color: 'rgba(255, 255, 255, 0.95)',
-    },
-    '& .feature-icon': {
-      color: theme.palette.secondary.light,
+      color: theme.palette.secondary.main,
     },
   },
 }));
@@ -124,6 +122,39 @@ const Home = () => {
     },
   ];
 
+  const industries = [
+    {
+      title: 'Financial Services',
+      icon: <FinanceIcon />,
+      description: 'Digital solutions for banking, insurance, and financial institutions.',
+    },
+    {
+      title: 'Healthcare',
+      icon: <HealthcareIcon />,
+      description: 'Healthcare software solutions for improved patient care and management.',
+    },
+    {
+      title: 'Retail',
+      icon: <RetailIcon />,
+      description: 'E-commerce and retail management solutions for modern businesses.',
+    },
+    {
+      title: 'Education',
+      icon: <EducationIcon />,
+      description: 'Educational technology solutions for institutions and learners.',
+    },
+    {
+      title: 'Manufacturing',
+      icon: <ManufacturingIcon />,
+      description: 'Industry 4.0 solutions for manufacturing and production.',
+    },
+    {
+      title: 'Business Services',
+      icon: <BusinessIcon />,
+      description: 'Enterprise solutions for business process optimization.',
+    },
+  ];
+
   const whyChooseUs = [
     {
       icon: <SpeedIcon sx={{ fontSize: '3rem', color: 'primary.main' }} />,
@@ -152,7 +183,9 @@ const Home = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          background: 'linear-gradient(135deg, #2B2D42 0%, #5C62F9 100%)',
+          background: 'linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url("https://i.postimg.cc/qvnC3Zjb/digitalsolution.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
           color: 'white',
           pt: { xs: 8, md: 12 },
           pb: { xs: 6, md: 8 },
@@ -162,17 +195,17 @@ const Home = () => {
       >
         <Container maxWidth="lg">
           <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={7}>
+            <Grid item xs={12} md={8}>
               <Typography 
                 variant="h1" 
                 sx={{ 
-                  fontSize: { xs: '2rem', md: '2.75rem' },
-                  fontWeight: 800,
+                  fontSize: { xs: '2.5rem', md: '4rem' },
+                  fontWeight: 700,
                   lineHeight: 1.2,
                   mb: 2,
                 }}
               >
-                Your Journey To Excellence Starts Here
+                Digital Solutions for Modern Businesses
               </Typography>
               <Typography 
                 variant="h5" 
@@ -181,114 +214,143 @@ const Home = () => {
                   opacity: 0.9,
                   fontWeight: 400,
                   lineHeight: 1.5,
-                  fontSize: { xs: '1rem', md: '1.25rem' },
+                  fontSize: { xs: '1.25rem', md: '1.5rem' },
                 }}
               >
-                We bring sustainable growth to your business through innovative technology solutions
+                We help businesses transform their digital presence with cutting-edge technology solutions
               </Typography>
-              <Button
-                variant="contained"
-                color="secondary"
-                size="large"
-                onClick={() => navigate('/contact')}
-                sx={{
-                  px: 3,
-                  py: 1.5,
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  borderRadius: 2,
-                  boxShadow: '0 8px 24px rgba(92, 98, 249, 0.3)',
-                }}
-              >
-                Schedule Free Consultation
-              </Button>
+              <Box sx={{ display: 'flex', gap: 2 }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                  onClick={() => navigate('/contact')}
+                  sx={{
+                    px: 4,
+                    py: 1.5,
+                    fontSize: '1.125rem',
+                    fontWeight: 600,
+                    borderRadius: 2,
+                    boxShadow: '0 8px 24px rgba(255, 77, 77, 0.3)',
+                  }}
+                >
+                  Get Started
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  size="large"
+                  onClick={() => navigate('/services')}
+                  sx={{
+                    px: 4,
+                    py: 1.5,
+                    fontSize: '1.125rem',
+                    fontWeight: 600,
+                    borderRadius: 2,
+                    borderWidth: 2,
+                  }}
+                >
+                  Our Services
+                </Button>
+              </Box>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
       {/* Services Section */}
-      <Container maxWidth="lg" sx={{ py: { xs: 4, sm: 6, md: 8 } }}>
-        <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 5, md: 6 } }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 6, sm: 8, md: 12 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 8 } }}>
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2.25rem' },
+              fontSize: { xs: '2rem', md: '3rem' },
               fontWeight: 700,
               mb: 2,
             }}
           >
-            Optimize Your Business With Our Services
+            Our Services
           </Typography>
           <Typography
             variant="h6"
             sx={{
               color: 'text.secondary',
-              maxWidth: '700px',
+              maxWidth: '800px',
               mx: 'auto',
               fontWeight: 400,
-              fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
+              fontSize: { xs: '1rem', md: '1.25rem' },
               px: { xs: 2, sm: 0 },
             }}
           >
-            Choose from our comprehensive range of technology solutions designed to drive your business forward
+            Comprehensive technology solutions to help your business thrive in the digital age
           </Typography>
         </Box>
 
-        <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
+        <Grid container spacing={{ xs: 3, sm: 4 }}>
           {services.map((service, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
-              <Paper
-                sx={{
-                  p: { xs: 2, sm: 3 },
-                  height: '100%',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 12px 32px rgba(92, 98, 249, 0.15)',
-                  },
-                }}
-                onClick={() => handleServiceClick(service.title)}
-              >
-                <Box sx={{ mb: 2, color: 'primary.main' }}>
+              <StyledPaper onClick={() => handleServiceClick(service.title)}>
+                <IconWrapper className="icon-wrapper">
                   {service.icon}
-                </Box>
-                <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
+                </IconWrapper>
+                <Typography 
+                  variant="h5" 
+                  className="service-title"
+                  sx={{ 
+                    mb: 2,
+                    fontWeight: 600,
+                    fontSize: { xs: '1.5rem', md: '1.75rem' },
+                  }}
+                >
                   {service.title}
                 </Typography>
-                <Typography color="text.secondary" sx={{ mb: 2 }}>
+                <Typography 
+                  color="text.secondary"
+                  className="service-description"
+                  sx={{ 
+                    mb: 3,
+                    fontSize: { xs: '1rem', md: '1.125rem' },
+                  }}
+                >
                   {service.description}
                 </Typography>
                 <List>
                   {service.features.map((feature, idx) => (
                     <ListItem key={idx} sx={{ px: 0, py: 0.5 }}>
                       <ListItemIcon sx={{ minWidth: 36 }}>
-                        <CheckCircleIcon color="primary" sx={{ fontSize: 20 }} />
+                        <CheckCircleIcon color="secondary" sx={{ fontSize: 20 }} />
                       </ListItemIcon>
-                      <ListItemText primary={feature} />
+                      <ListItemText 
+                        primary={feature}
+                        className="feature-text"
+                        sx={{ 
+                          '& .MuiListItemText-primary': {
+                            fontSize: { xs: '0.875rem', md: '1rem' },
+                          },
+                        }}
+                      />
                     </ListItem>
                   ))}
                 </List>
-              </Paper>
+              </StyledPaper>
             </Grid>
           ))}
         </Grid>
       </Container>
 
-      {/* Why Choose Us Section */}
-      <Box sx={{ bgcolor: 'background.default', py: { xs: 6, sm: 8, md: 12 } }}>
+      {/* Industries Section */}
+      <Box sx={{ bgcolor: 'grey.50', py: { xs: 6, sm: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 8 } }}>
             <Typography
               variant="h2"
               sx={{
-                fontSize: { xs: '1.75rem', sm: '2rem', md: '2.75rem' },
+                fontSize: { xs: '2rem', md: '3rem' },
                 fontWeight: 700,
                 mb: 2,
               }}
             >
-              Why Choose OneTechFuse
+              Industries We Serve
             </Typography>
             <Typography
               variant="h6"
@@ -297,67 +359,146 @@ const Home = () => {
                 maxWidth: '800px',
                 mx: 'auto',
                 fontWeight: 400,
-                fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
+                fontSize: { xs: '1rem', md: '1.25rem' },
                 px: { xs: 2, sm: 0 },
               }}
             >
-              Partner with us for innovative solutions and exceptional results
+              Tailored solutions for various industries to meet their unique needs
             </Typography>
           </Box>
 
           <Grid container spacing={{ xs: 3, sm: 4 }}>
-            {whyChooseUs.map((item, index) => (
-              <Grid item xs={12} sm={6} md={3} key={index}>
-                <Box sx={{ textAlign: 'center' }}>
-                  {item.icon}
-                  <Typography 
-                    variant="h5" 
-                    sx={{ 
-                      my: 2, 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.25rem', sm: '1.5rem' },
-                    }}
-                  >
-                    {item.title}
-                  </Typography>
-                  <Typography 
-                    color="text.secondary"
-                    sx={{
-                      fontSize: { xs: '0.9rem', sm: '1rem' },
-                      px: { xs: 2, sm: 0 },
-                    }}
-                  >
-                    {item.description}
-                  </Typography>
-                </Box>
+            {industries.map((industry, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Card
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    transition: 'all 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                      boxShadow: '0 12px 32px rgba(0, 0, 0, 0.1)',
+                    },
+                  }}
+                >
+                  <CardContent sx={{ p: 4 }}>
+                    <Box
+                      sx={{
+                        color: 'primary.main',
+                        mb: 2,
+                        '& svg': {
+                          fontSize: '2.5rem',
+                        },
+                      }}
+                    >
+                      {industry.icon}
+                    </Box>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        mb: 2,
+                        fontWeight: 600,
+                        fontSize: { xs: '1.5rem', md: '1.75rem' },
+                      }}
+                    >
+                      {industry.title}
+                    </Typography>
+                    <Typography
+                      color="text.secondary"
+                      sx={{
+                        fontSize: { xs: '1rem', md: '1.125rem' },
+                      }}
+                    >
+                      {industry.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
               </Grid>
             ))}
           </Grid>
         </Container>
       </Box>
 
+      {/* Why Choose Us Section */}
+      <Container maxWidth="lg" sx={{ py: { xs: 6, sm: 8, md: 12 } }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 8 } }}>
+          <Typography
+            variant="h2"
+            sx={{
+              fontSize: { xs: '2rem', md: '3rem' },
+              fontWeight: 700,
+              mb: 2,
+            }}
+          >
+            Why Choose Us
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              color: 'text.secondary',
+              maxWidth: '800px',
+              mx: 'auto',
+              fontWeight: 400,
+              fontSize: { xs: '1rem', md: '1.25rem' },
+              px: { xs: 2, sm: 0 },
+            }}
+          >
+            Our commitment to excellence and innovation sets us apart
+          </Typography>
+        </Box>
+
+        <Grid container spacing={{ xs: 3, sm: 4 }}>
+          {whyChooseUs.map((item, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <Box sx={{ textAlign: 'center' }}>
+                {item.icon}
+                <Typography 
+                  variant="h5" 
+                  sx={{ 
+                    my: 2, 
+                    fontWeight: 600,
+                    fontSize: { xs: '1.5rem', md: '1.75rem' },
+                  }}
+                >
+                  {item.title}
+                </Typography>
+                <Typography 
+                  color="text.secondary"
+                  sx={{
+                    fontSize: { xs: '1rem', md: '1.125rem' },
+                    px: { xs: 2, sm: 0 },
+                  }}
+                >
+                  {item.description}
+                </Typography>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
       {/* Stats Section */}
-      <Box sx={{ py: { xs: 6, sm: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: 'primary.main', color: 'white', py: { xs: 6, sm: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <Grid container spacing={{ xs: 4, sm: 6, md: 4 }}>
             <Grid item xs={6} sm={6} md={3}>
               <Box sx={{ textAlign: 'center' }}>
                 <Typography 
                   variant="h2" 
-                  color="primary.main" 
                   sx={{ 
-                    fontWeight: 800,
+                    fontWeight: 700,
                     mb: 1,
-                    fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                    fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
                   }}
                 >
                   10+
                 </Typography>
                 <Typography 
                   variant="h6" 
-                  color="text.secondary"
                   sx={{
-                    fontSize: { xs: '0.9rem', sm: '1rem', md: '1.25rem' },
+                    fontSize: { xs: '1rem', md: '1.25rem' },
+                    opacity: 0.9,
                   }}
                 >
                   Years Experience
@@ -368,15 +509,21 @@ const Home = () => {
               <Box sx={{ textAlign: 'center' }}>
                 <Typography 
                   variant="h2" 
-                  color="primary.main"
                   sx={{ 
-                    fontWeight: 800,
+                    fontWeight: 700,
                     mb: 1,
+                    fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
                   }}
                 >
                   50+
                 </Typography>
-                <Typography variant="h6" color="text.secondary">
+                <Typography 
+                  variant="h6" 
+                  sx={{
+                    fontSize: { xs: '1rem', md: '1.25rem' },
+                    opacity: 0.9,
+                  }}
+                >
                   Projects Completed
                 </Typography>
               </Box>
@@ -385,15 +532,21 @@ const Home = () => {
               <Box sx={{ textAlign: 'center' }}>
                 <Typography 
                   variant="h2" 
-                  color="primary.main"
                   sx={{ 
-                    fontWeight: 800,
+                    fontWeight: 700,
                     mb: 1,
+                    fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
                   }}
                 >
                   30+
                 </Typography>
-                <Typography variant="h6" color="text.secondary">
+                <Typography 
+                  variant="h6" 
+                  sx={{
+                    fontSize: { xs: '1rem', md: '1.25rem' },
+                    opacity: 0.9,
+                  }}
+                >
                   Expert Developers
                 </Typography>
               </Box>
@@ -402,15 +555,21 @@ const Home = () => {
               <Box sx={{ textAlign: 'center' }}>
                 <Typography 
                   variant="h2" 
-                  color="primary.main"
                   sx={{ 
-                    fontWeight: 800,
+                    fontWeight: 700,
                     mb: 1,
+                    fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
                   }}
                 >
                   100%
                 </Typography>
-                <Typography variant="h6" color="text.secondary">
+                <Typography 
+                  variant="h6" 
+                  sx={{
+                    fontSize: { xs: '1rem', md: '1.25rem' },
+                    opacity: 0.9,
+                  }}
+                >
                   Client Satisfaction
                 </Typography>
               </Box>
@@ -425,7 +584,7 @@ const Home = () => {
           sx={{
             bgcolor: 'primary.main',
             color: 'white',
-            p: { xs: 3, sm: 4, md: 8 },
+            p: { xs: 4, sm: 6, md: 8 },
             borderRadius: 4,
             textAlign: 'center',
             position: 'relative',
@@ -439,7 +598,7 @@ const Home = () => {
               mb: 2,
               position: 'relative',
               zIndex: 1,
-              fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' },
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
             }}
           >
             Ready to Transform Your Business?
@@ -453,7 +612,7 @@ const Home = () => {
               mx: 'auto',
               position: 'relative',
               zIndex: 1,
-              fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' },
+              fontSize: { xs: '1.125rem', sm: '1.25rem', md: '1.5rem' },
               px: { xs: 2, sm: 0 },
             }}
           >
@@ -465,12 +624,12 @@ const Home = () => {
             size="large"
             onClick={() => navigate('/contact')}
             sx={{
-              px: { xs: 3, sm: 4 },
-              py: { xs: 1, sm: 1.5 },
-              fontSize: { xs: '0.9rem', sm: '1rem' },
+              px: { xs: 4, sm: 6 },
+              py: { xs: 1.5, sm: 2 },
+              fontSize: { xs: '1rem', sm: '1.125rem' },
               fontWeight: 600,
               borderRadius: 2,
-              boxShadow: '0 8px 24px rgba(92, 98, 249, 0.3)',
+              boxShadow: '0 8px 24px rgba(255, 77, 77, 0.3)',
             }}
           >
             Schedule Free Consultation
