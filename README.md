@@ -76,5 +76,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Email: contact@onetechfuse.com
-Website: https://onetechfuse.com
+Email: onetechfuse@gmail.com
+Website: https://onetechfuse.in

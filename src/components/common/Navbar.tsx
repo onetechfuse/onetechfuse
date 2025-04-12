@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -16,6 +16,11 @@ import {
   ListItem,
   ListItemText,
   useMediaQuery,
+  Popper,
+  Grow,
+  Paper,
+  ClickAwayListener,
+  MenuList,
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import {
@@ -25,12 +30,19 @@ import {
 } from '@mui/icons-material';
 import Logo from './Logo';
 
+interface ServiceItem {
+  name: string;
+  path: string;
+}
+
 const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
-  const [industriesAnchorEl, setIndustriesAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const industriesRef = useRef<HTMLDivElement>(null);
 
   const services = [
     { name: 'Web Development', path: '/services/web-development' },
@@ -43,37 +55,12 @@ const Navbar = () => {
 
   const industries = [
     { name: 'Financial Services', path: '/industries/financial-services' },
-    { name: 'Information Technology', path: '/industries/information-technology' },
-    { name: 'Manufacturing', path: '/industries/manufacturing' },
-    { name: 'Nonprofit', path: '/industries/nonprofit' },
-    { name: 'Retail', path: '/industries/retail' },
     { name: 'Healthcare', path: '/industries/healthcare' },
+    { name: 'Retail', path: '/industries/retail' },
+    { name: 'Education', path: '/industries/education' },
+    { name: 'Manufacturing', path: '/industries/manufacturing' },
+    { name: 'Business Services', path: '/industries/business-services' },
   ];
-
-  const menuItems = [
-    { text: 'Home', path: '/' },
-    { text: 'About', path: '/about' },
-    {
-      text: 'Services',
-      path: '/services',
-      submenu: [
-        { text: 'Web Development', path: '/services/web-development' },
-        { text: 'Mobile Development', path: '/services/mobile-development' },
-        { text: 'Salesforce Solutions', path: '/services/salesforce-solutions' },
-        { text: 'E-Commerce Solutions', path: '/services/ecommerce-solutions' },
-        { text: 'Database Solutions', path: '/services/database-solutions' },
-        { text: 'API Development', path: '/services/api-development' },
-      ],
-    },
-    { text: 'Careers', path: '/careers' },
-    { text: 'Blog', path: '/blog' },
-    { text: 'Contact', path: '/contact' },
-  ];
-
-  const handleMobileMenuClick = (path: string) => {
-    setMobileMenuOpen(false);
-    // If you're using react-router, you can add navigation here
-  };
 
   const MobileMenu = () => (
     <Drawer
@@ -82,14 +69,13 @@ const Navbar = () => {
       onClose={() => setMobileMenuOpen(false)}
       PaperProps={{
         sx: {
-          width: '80%',
-          maxWidth: '300px',
+          width: '100%',
+          maxWidth: 320,
           bgcolor: 'background.paper',
-          p: 2,
         },
       }}
     >
-      <Box sx={{ mb: 2, display: 'flex', justifyContent: 'flex-end' }}>
+      <Box sx={{ p: 2, display: 'flex', justifyContent: 'flex-end' }}>
         <IconButton onClick={() => setMobileMenuOpen(false)}>
           <CloseIcon />
         </IconButton>
@@ -99,43 +85,52 @@ const Navbar = () => {
           <ListItemText primary="Home" />
         </ListItem>
         
-        <ListItem button onClick={() => setMobileMenuOpen(false)}>
+        {/* Mobile Services Menu */}
+        <ListItem button onClick={() => setServicesOpen(!servicesOpen)}>
           <ListItemText primary="Services" />
+          <ArrowDownIcon sx={{ transform: servicesOpen ? 'rotate(180deg)' : 'none', transition: '0.3s' }}/>
         </ListItem>
-        {services.map((service) => (
-          <ListItem
-            button
-            key={service.path}
-            component={RouterLink}
-            to={service.path}
-            onClick={() => setMobileMenuOpen(false)}
-            sx={{ pl: 4 }}
-          >
-            <ListItemText primary={service.name} />
-          </ListItem>
-        ))}
-
-        <ListItem button onClick={() => setMobileMenuOpen(false)}>
+        {servicesOpen && (
+          <Box sx={{ pl: 2 }}>
+            {services.map((service) => (
+              <ListItem 
+                button 
+                key={service.name} 
+                component={RouterLink} 
+                to={service.path} 
+                onClick={() => setMobileMenuOpen(false)}
+                sx={{ py: 1 }}
+              >
+                <ListItemText primary={service.name} />
+              </ListItem>
+            ))}
+          </Box>
+        )}
+        
+        {/* Mobile Industries Menu */}
+        <ListItem button onClick={() => setIndustriesOpen(!industriesOpen)}>
           <ListItemText primary="Industries" />
+          <ArrowDownIcon sx={{ transform: industriesOpen ? 'rotate(180deg)' : 'none', transition: '0.3s' }}/>
         </ListItem>
-        {industries.map((industry) => (
-          <ListItem
-            button
-            key={industry.path}
-            component={RouterLink}
-            to={industry.path}
-            onClick={() => setMobileMenuOpen(false)}
-            sx={{ pl: 4 }}
-          >
-            <ListItemText primary={industry.name} />
-          </ListItem>
-        ))}
-
+        {industriesOpen && (
+          <Box sx={{ pl: 2 }}>
+            {industries.map((industry) => (
+              <ListItem 
+                button 
+                key={industry.name} 
+                component={RouterLink} 
+                to={industry.path} 
+                onClick={() => setMobileMenuOpen(false)}
+                sx={{ py: 1 }}
+              >
+                <ListItemText primary={industry.name} />
+              </ListItem>
+            ))}
+          </Box>
+        )}
+        
         <ListItem button component={RouterLink} to="/about" onClick={() => setMobileMenuOpen(false)}>
-          <ListItemText primary="About" />
-        </ListItem>
-        <ListItem button component={RouterLink} to="/blog" onClick={() => setMobileMenuOpen(false)}>
-          <ListItemText primary="Blog" />
+          <ListItemText primary="About Us" />
         </ListItem>
         <ListItem button component={RouterLink} to="/careers" onClick={() => setMobileMenuOpen(false)}>
           <ListItemText primary="Careers" />
@@ -147,24 +142,122 @@ const Navbar = () => {
     </Drawer>
   );
 
+  interface NavMenuProps {
+    items: ServiceItem[];
+    menuRef: React.RefObject<HTMLDivElement>;
+    open: boolean;
+    label: string;
+    path: string;
+  }
+
+  const NavMenu = ({ items, menuRef, open, label, path }: NavMenuProps) => {
+    // Calculate the number of columns needed (3 items per column)
+    const columnsNeeded = Math.ceil(items.length / 3);
+    
+    return (
+      <Box
+        ref={menuRef}
+        onMouseEnter={() => menuRef === servicesRef ? setServicesOpen(true) : setIndustriesOpen(true)}
+        onMouseLeave={() => menuRef === servicesRef ? setServicesOpen(false) : setIndustriesOpen(false)}
+        sx={{ position: 'relative', display: 'inline-block' }}
+      >
+        <Button
+          color="inherit"
+          component={RouterLink}
+          to={path}
+          endIcon={<ArrowDownIcon />}
+          sx={{
+            textDecoration: 'none',
+            textTransform: 'none',
+            fontSize: '1rem',
+            fontWeight: 500,
+            height: '64px',
+            '&:hover': {
+              color: theme.palette.secondary.main,
+              backgroundColor: 'transparent',
+            },
+          }}
+        >
+          {label}
+        </Button>
+        <Box
+          sx={{
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            top: '64px',
+            zIndex: 1200,
+            width: columnsNeeded > 1 ? columnsNeeded * 220 : 220,
+            visibility: open ? 'visible' : 'hidden',
+            opacity: open ? 1 : 0,
+            transition: 'opacity 0.2s ease, visibility 0.2s ease',
+          }}
+        >
+          <Paper 
+            elevation={3}
+            sx={{ 
+              borderRadius: 2,
+              overflow: 'hidden',
+              width: '100%',
+              mt: 0.5,
+              display: 'flex',
+            }}
+          >
+            {Array.from({ length: columnsNeeded }).map((_, columnIndex) => (
+              <MenuList key={columnIndex} sx={{ width: '220px', padding: 0 }}>
+                {items
+                  .slice(columnIndex * 3, (columnIndex + 1) * 3)
+                  .map((item) => (
+                    <MenuItem
+                      key={item.name}
+                      component={RouterLink}
+                      to={item.path}
+                      sx={{
+                        py: 1.5,
+                        px: 3,
+                        '&:hover': {
+                          backgroundColor: 'rgba(255, 77, 77, 0.05)',
+                          color: theme.palette.secondary.main,
+                        },
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: '1rem',
+                          fontWeight: 500,
+                        }}
+                      >
+                        {item.name}
+                      </Typography>
+                    </MenuItem>
+                  ))}
+              </MenuList>
+            ))}
+          </Paper>
+        </Box>
+      </Box>
+    );
+  };
+
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" elevation={0}>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <Stack 
             direction="row" 
             alignItems="center" 
-            spacing={1} 
+            spacing={2} 
             sx={{ 
               flexGrow: 1,
               '&:hover': {
                 '& .logo': {
-                  transform: 'scale(1.1)',
+                  transform: 'scale(1.05)',
                 },
                 '& .company-name': {
-                  color: theme.palette.secondary.light,
+                  color: theme.palette.secondary.main,
                 },
               },
+              textDecoration: 'none',
             }}
             component={RouterLink}
             to="/"
@@ -182,137 +275,98 @@ const Navbar = () => {
               sx={{
                 textDecoration: 'none',
                 color: 'inherit',
-                fontWeight: 700,
-                letterSpacing: 1,
+                fontWeight: 800,
+                letterSpacing: '-0.02em',
                 transition: 'color 0.3s ease-in-out',
                 fontSize: { xs: '1.2rem', md: '1.5rem' },
+                textTransform: 'none',
+                display: 'flex',
+                alignItems: 'center',
               }}
               className="company-name"
             >
-              <span style={{ color: theme.palette.secondary.light }}>One</span>
-              Tech
-              <span style={{ color: theme.palette.secondary.light }}>Fuse</span>
+              <span style={{ color: theme.palette.secondary.main }}>One</span>
+              <span style={{ letterSpacing: '-0.04em', margin: '0 1px' }}>Tech</span>
+              <span style={{ color: theme.palette.secondary.main }}>Fuse</span>
             </Typography>
           </Stack>
 
-          {isMobile ? (
-            <IconButton
-              color="inherit"
-              onClick={() => setMobileMenuOpen(true)}
-              edge="end"
-            >
-              <MenuIcon />
-            </IconButton>
-          ) : (
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Button
-                component={RouterLink}
-                to="/"
-                color="inherit"
-                sx={{ mx: 1 }}
-              >
-                Home
-              </Button>
-
-              <Button
-                color="inherit"
-                sx={{ mx: 1 }}
-                onClick={(e) => setServicesAnchorEl(e.currentTarget)}
-                endIcon={<ArrowDownIcon />}
-              >
-                Services
-              </Button>
-              <Menu
-                anchorEl={servicesAnchorEl}
-                open={Boolean(servicesAnchorEl)}
-                onClose={() => setServicesAnchorEl(null)}
-                sx={{ mt: 1 }}
-              >
-                {services.map((service) => (
-                  <MenuItem
-                    key={service.path}
-                    component={RouterLink}
-                    to={service.path}
-                    onClick={() => setServicesAnchorEl(null)}
-                  >
-                    {service.name}
-                  </MenuItem>
-                ))}
-              </Menu>
-
-              <Button
-                color="inherit"
-                sx={{ mx: 1 }}
-                onClick={(e) => setIndustriesAnchorEl(e.currentTarget)}
-                endIcon={<ArrowDownIcon />}
-              >
-                Industries
-              </Button>
-              <Menu
-                anchorEl={industriesAnchorEl}
-                open={Boolean(industriesAnchorEl)}
-                onClose={() => setIndustriesAnchorEl(null)}
-                sx={{ mt: 1 }}
-              >
-                {industries.map((industry) => (
-                  <MenuItem
-                    key={industry.path}
-                    component={RouterLink}
-                    to={industry.path}
-                    onClick={() => setIndustriesAnchorEl(null)}
-                  >
-                    {industry.name}
-                  </MenuItem>
-                ))}
-              </Menu>
-
+          {!isMobile ? (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <NavMenu 
+                items={services} 
+                menuRef={servicesRef} 
+                open={servicesOpen} 
+                label="Services" 
+                path="/services" 
+              />
+              
+              <NavMenu 
+                items={industries} 
+                menuRef={industriesRef} 
+                open={industriesOpen} 
+                label="Industries" 
+                path="/industries" 
+              />
+              
               <Button
                 component={RouterLink}
                 to="/about"
                 color="inherit"
-                sx={{ mx: 1 }}
+                sx={{
+                  textDecoration: 'none',
+                  textTransform: 'none',
+                  fontSize: '1rem',
+                  fontWeight: 500,
+                  height: '64px',
+                  '&:hover': {
+                    color: theme.palette.secondary.main,
+                    backgroundColor: 'transparent',
+                  },
+                }}
               >
-                About
+                About Us
               </Button>
-
-              <Button
-                component={RouterLink}
-                to="/blog"
-                color="inherit"
-                sx={{ mx: 1 }}
-              >
-                Blog
-              </Button>
-
               <Button
                 component={RouterLink}
                 to="/careers"
                 color="inherit"
-                sx={{ mx: 1 }}
+                sx={{
+                  textDecoration: 'none',
+                  textTransform: 'none',
+                  fontSize: '1rem',
+                  fontWeight: 500,
+                  height: '64px',
+                  '&:hover': {
+                    color: theme.palette.secondary.main,
+                    backgroundColor: 'transparent',
+                  },
+                }}
               >
                 Careers
               </Button>
-
               <Button
                 component={RouterLink}
                 to="/contact"
                 color="inherit"
                 variant="outlined"
                 sx={{ 
+                  textDecoration: 'none',
                   ml: 2,
                   px: 3,
                   py: 1,
-                  borderRadius: 2,
+                  borderRadius: 12,
                   textTransform: 'none',
                   fontSize: '1rem',
                   fontWeight: 600,
                   borderColor: 'currentColor',
                   transition: 'all 0.3s ease-in-out',
                   '&:hover': {
-                    borderColor: theme.palette.secondary.light,
-                    color: theme.palette.secondary.light,
+                    borderColor: theme.palette.secondary.main,
+                    color: theme.palette.secondary.main,
                     transform: 'translateY(-2px)',
-                    boxShadow: '0 4px 14px 0 rgba(33, 150, 243, 0.39)',
+                    boxShadow: '0 4px 14px rgba(255, 77, 77, 0.2)',
+                    backgroundColor: 'transparent',
                   },
                   '&:active': {
                     transform: 'translateY(0)',
@@ -322,7 +376,16 @@ const Navbar = () => {
                 Contact Us
               </Button>
             </Box>
+          ) : (
+            <IconButton
+              color="inherit"
+              onClick={() => setMobileMenuOpen(true)}
+              sx={{ ml: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
           )}
+
           <MobileMenu />
         </Toolbar>
       </Container>

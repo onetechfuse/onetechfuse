@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import {
   Box,
   Container,
@@ -104,139 +105,239 @@ const Services: React.FC = () => {
     },
   ];
 
+  const seoKeywords = [
+    'IT services',
+    'software development services',
+    'web development company',
+    'Salesforce consulting',
+    'mobile app development',
+    'custom software solutions',
+    'enterprise software development',
+    'cloud computing services',
+    'API development services',
+    'database solutions',
+    'e-commerce development',
+    'digital transformation services',
+    'IT consulting',
+    'system integration',
+    'software maintenance',
+    'technology consulting',
+    'agile development',
+    'DevOps services',
+    'UI/UX design',
+    'quality assurance'
+  ].join(', ');
+
+  const seoDescription = 'Comprehensive IT and software development services including web development, Salesforce solutions, mobile apps, cloud computing, and enterprise software. Expert consulting and implementation for digital transformation.';
+
   return (
-    <Box>
-      {/* Hero Section */}
-      <Box
-        sx={{
-          bgcolor: 'primary.main',
-          color: 'white',
-          py: { xs: 8, md: 12 },
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <Typography
-                variant="h1"
-                sx={{
-                  fontSize: { xs: '2.5rem', md: '3.5rem' },
-                  fontWeight: 700,
-                  mb: 2,
-                }}
-              >
-                Our Services
-              </Typography>
-              <Typography
-                variant="h5"
-                sx={{
-                  mb: 4,
-                  opacity: 0.9,
-                }}
-              >
-                Comprehensive technology solutions to help your business thrive in the digital age.
-              </Typography>
+    <>
+      <Helmet>
+        <title>IT & Software Development Services | OneTechFuse</title>
+        <meta name="description" content={seoDescription} />
+        <meta name="keywords" content={seoKeywords} />
+        
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="IT & Software Development Services | OneTechFuse" />
+        <meta property="og:description" content={seoDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://onetechfuse.com/services" />
+        <meta property="og:image" content="https://onetechfuse.com/images/services-banner.jpg" />
+        
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="IT & Software Development Services | OneTechFuse" />
+        <meta name="twitter:description" content={seoDescription} />
+        <meta name="twitter:image" content="https://onetechfuse.com/images/services-banner.jpg" />
+        
+        {/* Additional SEO Meta Tags */}
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href="https://onetechfuse.com/services" />
+        
+        {/* Schema.org Structured Data */}
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "itemListElement": [
+                {
+                  "@type": "Service",
+                  "name": "Web Development",
+                  "description": "Custom web solutions tailored to your business needs",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "OneTechFuse"
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Salesforce Solutions",
+                  "description": "Expert Salesforce consulting and implementation services",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "OneTechFuse"
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Mobile Development",
+                  "description": "Native and cross-platform mobile applications",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "OneTechFuse"
+                  }
+                },
+                {
+                  "@type": "Service",
+                  "name": "Cloud Computing",
+                  "description": "Cloud infrastructure and migration services",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "OneTechFuse"
+                  }
+                }
+              ]
+            }
+          `}
+        </script>
+      </Helmet>
+      <Box>
+        {/* Hero Section */}
+        <Box
+          sx={{
+            background: 'linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url("https://i.postimg.cc/qvnC3Zjb/digitalsolution.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            color: 'white',
+            pt: { xs: 10, md: 16 },
+            pb: { xs: 8, md: 12 },
+            position: 'relative',
+          }}
+        >
+          <Container maxWidth="lg">
+            <Grid container spacing={4} alignItems="center">
+              <Grid item xs={12} md={6}>
+                <Typography
+                  variant="h1"
+                  sx={{
+                    fontSize: { xs: '2.5rem', md: '3.5rem' },
+                    fontWeight: 700,
+                    mb: 2,
+                  }}
+                >
+                  Our Services
+                </Typography>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    mb: 4,
+                    opacity: 0.9,
+                  }}
+                >
+                  Comprehensive technology solutions to help your business thrive in the digital age.
+                </Typography>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Box
+                  component="img"
+                  src="/images/services-hero.svg"
+                  alt="Our Services"
+                  sx={{
+                    width: '100%',
+                    maxWidth: 500,
+                    display: { xs: 'none', md: 'block' },
+                    mx: 'auto',
+                  }}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Box
-                component="img"
-                src="/images/services-hero.svg"
-                alt="Our Services"
-                sx={{
-                  width: '100%',
-                  maxWidth: 500,
-                  display: { xs: 'none', md: 'block' },
-                  mx: 'auto',
-                }}
-              />
-            </Grid>
+          </Container>
+        </Box>
+
+        {/* Services Grid */}
+        <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
+          <Grid container spacing={4}>
+            {services.map((service, index) => (
+              <Grid item xs={12} md={6} key={index}>
+                <Card
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    transition: 'transform 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                    },
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={service.image}
+                    alt={service.title}
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        mb: 2,
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          p: 1,
+                          borderRadius: 1,
+                          bgcolor: 'primary.main',
+                          color: 'white',
+                          mr: 2,
+                        }}
+                      >
+                        {service.icon}
+                      </Box>
+                      <Typography variant="h5" component="h3">
+                        {service.title}
+                      </Typography>
+                    </Box>
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      paragraph
+                      sx={{ mb: 2 }}
+                    >
+                      {service.description}
+                    </Typography>
+                    <Box sx={{ mb: 2 }}>
+                      {service.features.map((feature, featureIndex) => (
+                        <Typography
+                          key={featureIndex}
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{ mb: 0.5 }}
+                        >
+                          • {feature}
+                        </Typography>
+                      ))}
+                    </Box>
+                    <Button
+                      component={RouterLink}
+                      to={service.path}
+                      variant="contained"
+                      color="primary"
+                      fullWidth
+                    >
+                      Learn More
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Box>
-
-      {/* Services Grid */}
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
-        <Grid container spacing={4}>
-          {services.map((service, index) => (
-            <Grid item xs={12} md={6} key={index}>
-              <Card
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  transition: 'transform 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                  },
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={service.image}
-                  alt={service.title}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      mb: 2,
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        p: 1,
-                        borderRadius: 1,
-                        bgcolor: 'primary.main',
-                        color: 'white',
-                        mr: 2,
-                      }}
-                    >
-                      {service.icon}
-                    </Box>
-                    <Typography variant="h5" component="h3">
-                      {service.title}
-                    </Typography>
-                  </Box>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    paragraph
-                    sx={{ mb: 2 }}
-                  >
-                    {service.description}
-                  </Typography>
-                  <Box sx={{ mb: 2 }}>
-                    {service.features.map((feature, featureIndex) => (
-                      <Typography
-                        key={featureIndex}
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{ mb: 0.5 }}
-                      >
-                        • {feature}
-                      </Typography>
-                    ))}
-                  </Box>
-                  <Button
-                    component={RouterLink}
-                    to={service.path}
-                    variant="contained"
-                    color="primary"
-                    fullWidth
-                  >
-                    Learn More
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Box>
+    </>
   );
 };
 

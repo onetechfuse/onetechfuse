@@ -205,8 +205,8 @@ const Contact: React.FC = () => {
                 <Box>
                   <Typography variant="h6">Address</Typography>
                   <Typography color="text.secondary">
-                    123 Business Street, Suite 100<br />
-                    New York, NY 10001
+                    123 Business Street, Sector 117<br />
+                    Noida, 201304
                   </Typography>
                 </Box>
               </Box>
@@ -214,14 +214,14 @@ const Contact: React.FC = () => {
                 <Phone color="primary" />
                 <Box>
                   <Typography variant="h6">Phone</Typography>
-                  <Typography color="text.secondary">+1 (555) 123-4567</Typography>
+                  <Typography color="text.secondary">+91 9627056789</Typography>
                 </Box>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Email color="primary" />
                 <Box>
                   <Typography variant="h6">Email</Typography>
-                  <Typography color="text.secondary">contact@onetechfuse.com</Typography>
+                  <Typography color="text.secondary">onetechfuse@gmail.com</Typography>
                 </Box>
               </Box>
               <Box sx={{ mt: 'auto' }}>
