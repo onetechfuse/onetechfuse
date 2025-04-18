@@ -34,11 +34,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run generate-sitemap && react-scripts build",
+    "build": "mkdir -p dist/utils && tsc -p src/utils/tsconfig.json && node dist/utils/generateSitemap.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "generate-sitemap": "ts-node src/utils/generateSitemap.ts",
-    "submit-sitemap": "ts-node src/utils/submitSitemap.ts"
+    "generate-sitemap": "mkdir -p dist/utils && tsc -p src/utils/tsconfig.json && node dist/utils/generateSitemap.js",
+    "submit-sitemap": "mkdir -p dist/utils && tsc -p src/utils/tsconfig.json && node dist/utils/submitSitemap.js"
   },
   "eslintConfig": {
     "extends": [
