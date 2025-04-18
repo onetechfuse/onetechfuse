@@ -2,7 +2,7 @@ import fs from 'fs';
 import { globby } from 'globby';
 import prettier from 'prettier';
 
-const DOMAIN = 'https://onetechfuse.com';
+const DOMAIN = 'https://onetechfuse.in';
 
 async function generateSitemap() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
@@ -81,7 +81,7 @@ async function generateSitemap() {
     </urlset>
   `;
 
-  const formatted = prettier.format(sitemap, {
+  const formatted = await prettier.format(sitemap, {
     ...prettierConfig,
     parser: 'html',
   });
