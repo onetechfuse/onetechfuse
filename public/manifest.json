@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "OneTechFuse",
+  "name": "OneTechFuse - IT Solutions & Software Development",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +10,35 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#1A1A1A",
+  "background_color": "#ffffff",
+  "description": "OneTechFuse provides cutting-edge IT solutions, custom software development, mobile apps, web development, and Salesforce solutions.",
+  "orientation": "portrait-primary",
+  "categories": ["business", "technology", "productivity"],
+  "screenshots": [
+    {
+      "src": "screenshots/home.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshots/services.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
