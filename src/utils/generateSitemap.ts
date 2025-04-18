@@ -87,6 +87,8 @@ async function generateSitemap() {
   });
 
   fs.writeFileSync('public/sitemap.xml', formatted);
+  console.log('Sitemap generated successfully!');
 }
 
-export default generateSitemap; 
+// Execute the function
+generateSitemap().catch(console.error); 
