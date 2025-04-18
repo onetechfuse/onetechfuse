@@ -166,19 +166,19 @@ const Careers = () => {
         <meta property="og:title" content="Careers at OneTechFuse | Software & IT Solutions Jobs" />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://onetechfuse.com/careers" />
-        <meta property="og:image" content="https://onetechfuse.com/images/careers-banner.jpg" />
+        <meta property="og:url" content="https://onetechfuse.in/careers" />
+        <meta property="og:image" content="https://onetechfuse.in/images/careers-banner.jpg" />
         
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Careers at OneTechFuse | Software & IT Solutions Jobs" />
         <meta name="twitter:description" content={seoDescription} />
-        <meta name="twitter:image" content="https://onetechfuse.com/images/careers-banner.jpg" />
+        <meta name="twitter:image" content="https://onetechfuse.in/images/careers-banner.jpg" />
         
         {/* Additional SEO Meta Tags */}
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://onetechfuse.com/careers" />
+        <link rel="canonical" href="https://onetechfuse.in/careers" />
         
         {/* Schema.org Job Posting Structured Data */}
         <script type="application/ld+json">
@@ -187,20 +187,66 @@ const Careers = () => {
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "OneTechFuse",
-              "url": "https://onetechfuse.com",
+              "url": "https://onetechfuse.in",
+              "logo": "https://onetechfuse.in/logo.png",
               "sameAs": [
                 "https://www.linkedin.com/company/onetechfuse",
                 "https://twitter.com/onetechfuse",
                 "https://github.com/onetechfuse"
               ],
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "123 Business Street, Sector 117",
+                "addressLocality": "Noida",
+                "addressRegion": "UP",
+                "postalCode": "201304",
+                "addressCountry": "IN"
+              },
               "jobLocation": {
                 "@type": "Place",
                 "address": {
                   "@type": "PostalAddress",
-                  "addressLocality": "Remote",
-                  "addressCountry": "US"
+                  "streetAddress": "123 Business Street, Sector 117",
+                  "addressLocality": "Noida",
+                  "addressRegion": "UP",
+                  "postalCode": "201304",
+                  "addressCountry": "IN"
                 }
-              }
+              },
+              "jobPosting": [
+                {
+                  "@type": "JobPosting",
+                  "title": "Senior Full Stack Developer",
+                  "description": "We are looking for a Senior Full Stack Developer who is passionate about building innovative web applications. You will be responsible for developing and maintaining high-quality software solutions.",
+                  "datePosted": "2024-03-20",
+                  "validThrough": "2024-06-20",
+                  "employmentType": "FULL_TIME",
+                  "hiringOrganization": {
+                    "@type": "Organization",
+                    "name": "OneTechFuse",
+                    "sameAs": "https://onetechfuse.in"
+                  },
+                  "jobLocation": {
+                    "@type": "Place",
+                    "address": {
+                      "@type": "PostalAddress",
+                      "addressLocality": "Noida",
+                      "addressRegion": "UP",
+                      "addressCountry": "IN"
+                    }
+                  },
+                  "baseSalary": {
+                    "@type": "MonetaryAmount",
+                    "currency": "INR",
+                    "value": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1500000,
+                      "maxValue": 2500000,
+                      "unitText": "YEAR"
+                    }
+                  }
+                }
+              ]
             }
           `}
         </script>
@@ -307,12 +353,13 @@ const Careers = () => {
               <Box
                 component="img"
                 src="https://via.placeholder.com/600x400"
-                alt="Team Culture"
+                alt="OneTechFuse company culture - Team members collaborating in a modern office environment"
                 sx={{
                   width: '100%',
                   height: 'auto',
                   borderRadius: 2,
                   boxShadow: '0 12px 32px rgba(0, 0, 0, 0.1)',
+                  loading: 'lazy',
                 }}
               />
             </Grid>
@@ -518,7 +565,7 @@ const Careers = () => {
               variant="contained"
               color="secondary"
               size="large"
-              href="mailto:careers@onetechfuse.com"
+              href="mailto:onetechfuse@gmail.com"
               sx={{
                 px: { xs: 4, sm: 6 },
                 py: { xs: 1.5, sm: 2 },
