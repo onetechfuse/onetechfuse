@@ -29,6 +29,9 @@
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "npm run generate-sitemap && react-scripts build",
