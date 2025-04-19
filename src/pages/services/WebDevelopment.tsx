@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Container,
@@ -30,6 +31,11 @@ import {
 
 const WebDevelopment: React.FC = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate('/contact');
+  };
 
   const features = [
     {
@@ -205,13 +211,16 @@ const WebDevelopment: React.FC = () => {
           {features.map((feature, index) => (
             <Grid item xs={12} md={6} key={index}>
               <Card
+                onClick={handleCardClick}
                 sx={{
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  transition: 'transform 0.3s ease-in-out',
+                  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                  cursor: 'pointer',
                   '&:hover': {
                     transform: 'translateY(-8px)',
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
                   },
                 }}
               >
@@ -248,9 +257,9 @@ const WebDevelopment: React.FC = () => {
                   </Typography>
                   <List>
                     {feature.benefits.map((benefit, benefitIndex) => (
-                      <ListItem key={benefitIndex}>
-                        <ListItemIcon>
-                          <CheckCircle color="primary" />
+                      <ListItem key={benefitIndex} disableGutters dense>
+                        <ListItemIcon sx={{ minWidth: 36 }}>
+                          <CheckCircle color="primary" sx={{ fontSize: 20 }} />
                         </ListItemIcon>
                         <ListItemText primary={benefit} />
                       </ListItem>

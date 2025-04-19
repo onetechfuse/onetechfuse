@@ -29,9 +29,11 @@ import {
   BugReport,
   Update,
 } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const MobileDevelopment: React.FC = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const features = [
     {
@@ -123,6 +125,10 @@ const MobileDevelopment: React.FC = () => {
     { name: 'DevOps', items: ['Fastlane', 'Bitrise', 'Jenkins', 'GitHub Actions', 'CircleCI'] },
   ];
 
+  const handleCardClick = () => {
+    navigate('/contact');
+  };
+
   return (
     <Box>
       {/* Hero Section */}
@@ -207,13 +213,16 @@ const MobileDevelopment: React.FC = () => {
           {features.map((feature, index) => (
             <Grid item xs={12} md={6} key={index}>
               <Card
+                onClick={handleCardClick}
                 sx={{
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  transition: 'transform 0.3s ease-in-out',
+                  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                  cursor: 'pointer',
                   '&:hover': {
                     transform: 'translateY(-8px)',
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
                   },
                 }}
               >
