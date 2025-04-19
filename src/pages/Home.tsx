@@ -16,6 +16,7 @@ import {
   Card,
   CardContent,
   useMediaQuery,
+  CardMedia,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -189,44 +190,81 @@ const Home = () => {
   const handleServiceClick = (service: string) => {
     const path = `/services/${service.toLowerCase().replace(/\s+/g, '-')}`;
     navigate(path);
+    window.scrollTo(0, 0);
   };
 
   const services = [
     {
       title: 'Web Development',
+      description: 'Create powerful web applications that drive your business forward.',
       icon: <CodeIcon />,
-      description: 'Custom web solutions tailored to your business needs with modern technologies.',
-      features: ['Custom Development', 'Responsive Design', 'Performance Optimization'],
-    },
-    {
-      title: 'Salesforce Solutions',
-      icon: <CloudIcon />,
-      description: 'Expert Salesforce consulting, implementation, and customization services.',
-      features: ['Implementation', 'Customization', 'Integration'],
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/onetechfuse-web-development-p1pR2oVeO4TsjA1VAyh2vPGmVqSBre.jpg',
+      features: [
+        'Frontend Development',
+        'Backend Development',
+        'UI/UX Design',
+        'Cloud Solutions',
+      ],
     },
     {
       title: 'Mobile Development',
+      description: 'Build native and cross-platform mobile applications for iOS and Android.',
       icon: <MobileIcon />,
-      description: 'Native and cross-platform mobile applications for exceptional experiences.',
-      features: ['iOS Development', 'Android Development', 'Cross-platform'],
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/app-development-3Zp0UCYX1TamDpzMpT2jcrWmZWG9W0.jpg',
+      features: [
+        'iOS Development',
+        'Android Development',
+        'Cross-Platform Apps',
+        'App Maintenance',
+      ],
+    },
+    {
+      title: 'Salesforce Solutions',
+      description: 'Transform your business with powerful Salesforce solutions.',
+      icon: <CloudIcon />,
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/salesforce-2IoordkzMkY4qg530X9E9JhcnaTAEM.jpg',
+      features: [
+        'Sales Cloud',
+        'Service Cloud',
+        'Custom Development',
+        'Integration Services',
+      ],
     },
     {
       title: 'E-Commerce Solutions',
+      description: 'Create online stores that drive sales and growth.',
       icon: <EcommerceIcon />,
-      description: 'Scalable e-commerce platforms that drive sales and engagement.',
-      features: ['Online Store', 'Payment Integration', 'Inventory Management'],
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/e-commerce-o1P82DGou37aP4fVwEJoch9KKWG9Vu.jpg',
+      features: [
+        'Online Store Setup',
+        'Payment Integration',
+        'Inventory Management',
+        'Order Processing',
+      ],
     },
     {
       title: 'Database Solutions',
+      description: 'Design and implement robust database solutions for your business.',
       icon: <DatabaseIcon />,
-      description: 'Robust database design and management for optimal data organization.',
-      features: ['Data Modeling', 'Performance Tuning', 'Migration Services'],
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/database_sol-VZRkArvkMztYHGNG633kA3jYcY7SLA.jpg',
+      features: [
+        'Database Design',
+        'Data Migration',
+        'Performance Optimization',
+        'Backup Solutions',
+      ],
     },
     {
       title: 'API Development',
+      description: 'Build scalable and secure APIs for your applications.',
       icon: <ApiIcon />,
-      description: 'RESTful and GraphQL APIs for seamless system integration.',
-      features: ['API Design', 'Documentation', 'Security'],
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/Api-development-image-WC1nZ9gNnXyxGcOXYc2rhguL2vRICi.png',
+      features: [
+        'RESTful APIs',
+        'GraphQL APIs',
+        'API Integration',
+        'API Security',
+      ],
     },
   ];
 
@@ -433,7 +471,7 @@ const Home = () => {
           </Container>
         </HeroSection>
 
-        {/* Services Section */}
+        {/* Our Services Section */}
         <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
           <Container>
             <Typography
@@ -447,63 +485,59 @@ const Home = () => {
             <Grid container spacing={4}>
               {services.map((service, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
-                  <StyledPaper onClick={() => handleServiceClick(service.title)}>
-                    <IconWrapper className="icon-wrapper">
-                      {service.icon}
-                    </IconWrapper>
-                    <Typography
-                      variant="h5"
-                      className="service-title"
-                      gutterBottom
-                      sx={{ color: 'primary.main' }}
-                    >
-                      {service.title}
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary" paragraph>
-                      {service.description}
-                    </Typography>
-                    <List dense>
-                      {service.features.map((feature, idx) => (
-                        <ListItem key={idx} disableGutters>
-                          <ListItemIcon sx={{ minWidth: 32 }}>
-                            <CheckCircleIcon color="secondary" sx={{ fontSize: 20 }} />
-                          </ListItemIcon>
-                          <ListItemText primary={feature} />
-                        </ListItem>
-                      ))}
-                    </List>
-                  </StyledPaper>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </Box>
-
-        {/* Why Choose Us Section with Images */}
-        <Box sx={{ py: 8, backgroundColor: 'grey.50' }}>
-          <Container>
-            <Typography
-              variant="h2"
-              align="center"
-              gutterBottom
-              sx={{ mb: 6, color: 'primary.main' }}
-            >
-              Why Choose Us
-            </Typography>
-            <Grid container spacing={4}>
-              {whyChooseUs.map((item, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <Card sx={{ height: '100%', textAlign: 'center' }}>
-                    <CardContent>
-                      <Box sx={{ mb: 2 }}>
-                        {item.icon}
+                  <Card 
+                    sx={{ 
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                      '&:hover': {
+                        transform: 'translateY(-8px)',
+                        boxShadow: '0 8px 40px rgba(0, 0, 0, 0.1)',
+                      },
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => handleServiceClick(service.title)}
+                  >
+                    <CardMedia
+                      component="img"
+                      height="200"
+                      image={service.image}
+                      alt={service.title}
+                      sx={{
+                        objectFit: 'cover',
+                      }}
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                        <Box
+                          sx={{
+                            backgroundColor: 'primary.main',
+                            borderRadius: 1,
+                            p: 1,
+                            mr: 2,
+                            color: 'white',
+                          }}
+                        >
+                          {service.icon}
+                        </Box>
+                        <Typography variant="h5" component="h3" color="primary.main">
+                          {service.title}
+                        </Typography>
                       </Box>
-                      <Typography variant="h6" gutterBottom color="primary">
-                        {item.title}
+                      <Typography variant="body1" color="text.secondary" paragraph>
+                        {service.description}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {item.description}
-                      </Typography>
+                      <List dense>
+                        {service.features.map((feature, idx) => (
+                          <ListItem key={idx} disableGutters>
+                            <ListItemIcon sx={{ minWidth: 32 }}>
+                              <CheckCircleIcon color="secondary" sx={{ fontSize: 20 }} />
+                            </ListItemIcon>
+                            <ListItemText primary={feature} />
+                          </ListItem>
+                        ))}
+                      </List>
                     </CardContent>
                   </Card>
                 </Grid>
@@ -512,8 +546,8 @@ const Home = () => {
           </Container>
         </Box>
 
-        {/* Industries Section */}
-        <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
+        {/* Industries We Serve Section */}
+        <Box sx={{ py: 8, backgroundColor: 'grey.50' }}>
           <Container>
             <Typography
               variant="h2"
@@ -648,6 +682,39 @@ const Home = () => {
                   </Typography>
                 </Box>
               </Grid>
+            </Grid>
+          </Container>
+        </Box>
+
+        {/* Why Choose Us Section */}
+        <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
+          <Container>
+            <Typography
+              variant="h2"
+              align="center"
+              gutterBottom
+              sx={{ mb: 6, color: 'primary.main' }}
+            >
+              Why Choose Us
+            </Typography>
+            <Grid container spacing={4}>
+              {whyChooseUs.map((item, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                  <Card sx={{ height: '100%', textAlign: 'center' }}>
+                    <CardContent>
+                      <Box sx={{ mb: 2 }}>
+                        {item.icon}
+                      </Box>
+                      <Typography variant="h6" gutterBottom color="primary">
+                        {item.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {item.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
             </Grid>
           </Container>
         </Box>
