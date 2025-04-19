@@ -171,7 +171,7 @@ const SalesforceSolutions: React.FC = () => {
                 Transform your business with comprehensive Salesforce solutions that drive growth and efficiency.
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
               <Box
                 component="img"
                 src="/images/salesforce-hero.svg"
@@ -184,7 +184,7 @@ const SalesforceSolutions: React.FC = () => {
                   filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.2))',
                 }}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

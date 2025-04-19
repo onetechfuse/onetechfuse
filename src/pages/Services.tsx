@@ -29,7 +29,7 @@ const Services: React.FC = () => {
       title: 'Web Development',
       description: 'Create powerful web applications that drive your business forward.',
       icon: <Code />,
-      image: '/images/web-development.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/onetechfuse-web-development-p1pR2oVeO4TsjA1VAyh2vPGmVqSBre.jpg',
       path: '/services/web-development',
       features: [
         'Frontend Development',
@@ -42,7 +42,7 @@ const Services: React.FC = () => {
       title: 'Mobile Development',
       description: 'Build native and cross-platform mobile applications for iOS and Android.',
       icon: <PhoneAndroid />,
-      image: '/images/mobile-development.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/app-development-3Zp0UCYX1TamDpzMpT2jcrWmZWG9W0.jpg',
       path: '/services/mobile-development',
       features: [
         'iOS Development',
@@ -55,7 +55,7 @@ const Services: React.FC = () => {
       title: 'Salesforce Solutions',
       description: 'Transform your business with powerful Salesforce solutions.',
       icon: <Cloud />,
-      image: '/images/salesforce-solutions.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/salesforce-2IoordkzMkY4qg530X9E9JhcnaTAEM.jpg',
       path: '/services/salesforce-solutions',
       features: [
         'Sales Cloud',
@@ -68,7 +68,7 @@ const Services: React.FC = () => {
       title: 'E-Commerce Solutions',
       description: 'Create online stores that drive sales and growth.',
       icon: <ShoppingCart />,
-      image: '/images/ecommerce-solutions.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/e-commerce-o1P82DGou37aP4fVwEJoch9KKWG9Vu.jpg',
       path: '/services/ecommerce-solutions',
       features: [
         'Online Store Setup',
@@ -81,7 +81,7 @@ const Services: React.FC = () => {
       title: 'Database Solutions',
       description: 'Design and implement robust database solutions for your business.',
       icon: <Storage />,
-      image: '/images/database-solutions.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/database_sol-VZRkArvkMztYHGNG633kA3jYcY7SLA.jpg',
       path: '/services/database-solutions',
       features: [
         'Database Design',
@@ -94,7 +94,7 @@ const Services: React.FC = () => {
       title: 'API Development',
       description: 'Build scalable and secure APIs for your applications.',
       icon: <Api />,
-      image: '/images/api-development.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/Api-development-image-WC1nZ9gNnXyxGcOXYc2rhguL2vRICi.png',
       path: '/services/api-development',
       features: [
         'RESTful APIs',
@@ -141,19 +141,19 @@ const Services: React.FC = () => {
         <meta property="og:title" content="IT & Software Development Services | OneTechFuse" />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://onetechfuse.com/services" />
-        <meta property="og:image" content="https://onetechfuse.com/images/services-banner.jpg" />
+        <meta property="og:url" content="https://onetechfuse.in/services" />
+        <meta property="og:image" content="https://onetechfuse.in/images/services-banner.jpg" />
         
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="IT & Software Development Services | OneTechFuse" />
         <meta name="twitter:description" content={seoDescription} />
-        <meta name="twitter:image" content="https://onetechfuse.com/images/services-banner.jpg" />
+        <meta name="twitter:image" content="https://onetechfuse.in/images/services-banner.jpg" />
         
         {/* Additional SEO Meta Tags */}
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://onetechfuse.com/services" />
+        <link rel="canonical" href="https://onetechfuse.in/services" />
         
         {/* Schema.org Structured Data */}
         <script type="application/ld+json">
@@ -239,10 +239,10 @@ const Services: React.FC = () => {
                   Comprehensive technology solutions to help your business thrive in the digital age.
                 </Typography>
               </Grid>
-              <Grid item xs={12} md={6}>
+              {/* <Grid item xs={12} md={6}>
                 <Box
                   component="img"
-                  src="/images/services-hero.svg"
+                  src="https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/our-services-2VjKmuJfBTAe0OMzVhqZUHJsId8XMz.jpg"
                   alt="Our Services"
                   sx={{
                     width: '100%',
@@ -251,7 +251,7 @@ const Services: React.FC = () => {
                     mx: 'auto',
                   }}
                 />
-              </Grid>
+              </Grid> */}
             </Grid>
           </Container>
         </Box>

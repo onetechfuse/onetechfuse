@@ -170,7 +170,7 @@ const EcommerceSolutions: React.FC = () => {
                 Create powerful online stores that drive sales and growth with cutting-edge e-commerce solutions.
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
               <Box
                 component="img"
                 src="/images/ecommerce-hero.svg"
@@ -183,7 +183,7 @@ const EcommerceSolutions: React.FC = () => {
                   filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.2))',
                 }}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

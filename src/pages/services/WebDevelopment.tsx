@@ -170,7 +170,7 @@ const WebDevelopment: React.FC = () => {
                 Create powerful web applications that drive your business forward with cutting-edge technologies and best practices.
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
               <Box
                 component="img"
                 src="/images/web-hero.svg"
@@ -183,7 +183,7 @@ const WebDevelopment: React.FC = () => {
                   filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.2))',
                 }}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

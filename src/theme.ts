@@ -3,20 +3,20 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1A1A1A', // Dark gray like Intellectsoft
-      light: '#333333',
-      dark: '#000000',
+      main: '#0A1929', // Dark blue-black
+      light: '#1A2942',
+      dark: '#050D1A',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#FF4D4D', // Red accent like Intellectsoft
-      light: '#FF6B6B',
-      dark: '#CC3D3D',
+      main: '#2196F3', // Material UI Blue
+      light: '#64B5F6',
+      dark: '#1976D2',
       contrastText: '#ffffff',
     },
     text: {
-      primary: '#1A1A1A',
-      secondary: '#666666',
+      primary: '#0A1929',
+      secondary: '#42526E',
     },
     background: {
       default: '#FFFFFF',

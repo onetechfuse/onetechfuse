@@ -28,7 +28,7 @@ const Industries: React.FC = () => {
       title: 'Financial Services',
       description: 'Innovative solutions for banks, insurance companies, and financial institutions.',
       icon: <AccountBalance />,
-      image: '/images/financial-services.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/finance-img-7yUzG2ZfhMRc1vxqXnXTw1Tm7Lxn0y.png',
       path: '/industries/financial-services',
       features: [
         'Banking Solutions',
@@ -41,7 +41,7 @@ const Industries: React.FC = () => {
       title: 'Healthcare',
       description: 'Digital transformation for healthcare providers and medical organizations.',
       icon: <HealthAndSafety />,
-      image: '/images/healthcare.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/healthcare-J8STQo4Ek24EngTkaLHrE4Tb4iNX2Z.jpg',
       path: '/industries/healthcare',
       features: [
         'Patient Management',
@@ -54,7 +54,7 @@ const Industries: React.FC = () => {
       title: 'Retail',
       description: 'Technology solutions that enhance customer experience and boost sales.',
       icon: <LocalMall />,
-      image: '/images/retail.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/retail-solutions-HrLyogLb3FAHiO3LSLVh1RLGurJgwp.png',
       path: '/industries/retail',
       features: [
         'E-commerce Platforms',
@@ -67,7 +67,7 @@ const Industries: React.FC = () => {
       title: 'Education',
       description: 'Digital learning platforms and educational management systems.',
       icon: <School />,
-      image: '/images/education.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/Education-27Ma3kCTgpOgGoaOIXYvJq3tIKn0AF.jpeg',
       path: '/industries/education',
       features: [
         'Learning Management',
@@ -80,7 +80,7 @@ const Industries: React.FC = () => {
       title: 'Manufacturing',
       description: 'Solutions to optimize production processes and supply chain management.',
       icon: <Factory />,
-      image: '/images/manufacturing.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/manufacturing1-7hZWSSRazxigN3Yl8y4yJ5yWTE3L4k.jpeg',
       path: '/industries/manufacturing',
       features: [
         'Production Management',
@@ -93,7 +93,7 @@ const Industries: React.FC = () => {
       title: 'Business Services',
       description: 'Improving operational efficiency for professional service firms.',
       icon: <BusinessCenter />,
-      image: '/images/business-services.jpg',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/Business%20Services-6dhiQWPb7NFN8qcVIf4ioz9ixWtGvm.jpg',
       path: '/industries/business-services',
       features: [
         'CRM Solutions',

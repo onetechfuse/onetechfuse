@@ -172,7 +172,7 @@ const MobileDevelopment: React.FC = () => {
                 Create powerful mobile applications that engage users and drive business growth with cutting-edge technologies.
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
               <Box
                 component="img"
                 src="/images/mobile-hero.svg"
@@ -185,7 +185,7 @@ const MobileDevelopment: React.FC = () => {
                   filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.2))',
                 }}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>
