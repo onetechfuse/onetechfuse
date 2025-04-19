@@ -160,7 +160,7 @@ const Contact: React.FC = () => {
                 Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
               <Box
                 component="img"
                 src="/images/contact-hero.svg"
@@ -173,7 +173,7 @@ const Contact: React.FC = () => {
                   filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.2))',
                 }}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

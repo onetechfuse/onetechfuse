@@ -169,7 +169,7 @@ const ApiDevelopment: React.FC = () => {
                 Build robust and scalable APIs that power your applications with modern technologies and best practices.
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
               <Box
                 component="img"
                 src="/images/api-hero.svg"
@@ -182,7 +182,7 @@ const ApiDevelopment: React.FC = () => {
                   filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.2))',
                 }}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

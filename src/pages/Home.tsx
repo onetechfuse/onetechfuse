@@ -15,6 +15,7 @@ import {
   ListItemText,
   Card,
   CardContent,
+  useMediaQuery,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -75,9 +76,90 @@ const IconWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
+const HeroSection = styled(Box)(({ theme }) => ({
+  background: 'linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url("https://i.postimg.cc/qvnC3Zjb/digitalsolution.jpg")',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  color: 'white',
+  position: 'relative',
+  overflow: 'hidden',
+  [theme.breakpoints.up('md')]: {
+    paddingTop: theme.spacing(16),
+    paddingBottom: theme.spacing(12),
+  },
+  [theme.breakpoints.down('md')]: {
+    paddingTop: theme.spacing(10),
+    paddingBottom: theme.spacing(8),
+  },
+}));
+
+const StyledImage = styled('img')({
+  maxWidth: '100%',
+  height: 'auto',
+  display: 'block',
+  margin: '0 auto',
+});
+
+const IndustryCard = styled(Card)(({ theme }) => ({
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  transition: 'all 0.3s ease-in-out',
+  overflow: 'hidden',
+  '&:hover': {
+    transform: 'translateY(-8px)',
+    boxShadow: '0 12px 32px rgba(0, 0, 0, 0.1)',
+    '& .industry-image': {
+      transform: 'scale(1.1)',
+    },
+    '& .industry-icon': {
+      backgroundColor: theme.palette.secondary.main,
+    }
+  }
+}));
+
+const IndustryImage = styled('div')(({ theme }) => ({
+  height: 200,
+  position: 'relative',
+  overflow: 'hidden',
+  '& img': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    transition: 'transform 0.6s ease-in-out',
+  }
+}));
+
+const IndustryIcon = styled(Box)(({ theme }) => ({
+  width: 60,
+  height: 60,
+  borderRadius: '50%',
+  backgroundColor: theme.palette.primary.main,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  position: 'absolute',
+  bottom: -30,
+  right: 20,
+  transition: 'all 0.3s ease-in-out',
+  zIndex: 2,
+  '& svg': {
+    fontSize: 30,
+    color: 'white',
+  }
+}));
+
+const IndustryContent = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(4, 3, 3),
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+}));
+
 const Home = () => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const seoKeywords = [
     'IT solutions company',
@@ -151,33 +233,39 @@ const Home = () => {
   const industries = [
     {
       title: 'Financial Services',
-      icon: <FinanceIcon />,
+      icon: <FinanceIcon sx={{ fontSize: 40 }} />,
       description: 'Digital solutions for banking, insurance, and financial institutions.',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/finance-img-7yUzG2ZfhMRc1vxqXnXTw1Tm7Lxn0y.png'
     },
     {
       title: 'Healthcare',
-      icon: <HealthcareIcon />,
+      icon: <HealthcareIcon sx={{ fontSize: 40 }} />,
       description: 'Healthcare software solutions for improved patient care and management.',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/healthcare-J8STQo4Ek24EngTkaLHrE4Tb4iNX2Z.jpg'
     },
     {
       title: 'Retail',
-      icon: <RetailIcon />,
+      icon: <RetailIcon sx={{ fontSize: 40 }} />,
       description: 'E-commerce and retail management solutions for modern businesses.',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/retail-solutions-HrLyogLb3FAHiO3LSLVh1RLGurJgwp.png'
     },
     {
       title: 'Education',
-      icon: <EducationIcon />,
+      icon: <EducationIcon sx={{ fontSize: 40 }} />,
       description: 'Educational technology solutions for institutions and learners.',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/Education-27Ma3kCTgpOgGoaOIXYvJq3tIKn0AF.jpeg'
     },
     {
       title: 'Manufacturing',
-      icon: <ManufacturingIcon />,
+      icon: <ManufacturingIcon sx={{ fontSize: 40 }} />,
       description: 'Industry 4.0 solutions for manufacturing and production.',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/manufacturing1-7hZWSSRazxigN3Yl8y4yJ5yWTE3L4k.jpeg'
     },
     {
       title: 'Business Services',
-      icon: <BusinessIcon />,
+      icon: <BusinessIcon sx={{ fontSize: 40 }} />,
       description: 'Enterprise solutions for business process optimization.',
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/Business%20Services-6dhiQWPb7NFN8qcVIf4ioz9ixWtGvm.jpg'
     },
   ];
 
@@ -215,19 +303,19 @@ const Home = () => {
         <meta property="og:title" content="OneTechFuse | Custom Software Development & IT Solutions" />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://onetechfuse.com" />
-        <meta property="og:image" content="https://onetechfuse.com/images/hero-banner.jpg" />
+        <meta property="og:url" content="https://onetechfuse.in" />
+        <meta property="og:image" content="https://onetechfuse.in/images/hero-banner.jpg" />
         
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="OneTechFuse | Custom Software Development & IT Solutions" />
         <meta name="twitter:description" content={seoDescription} />
-        <meta name="twitter:image" content="https://onetechfuse.com/images/hero-banner.jpg" />
+        <meta name="twitter:image" content="https://onetechfuse.in/images/hero-banner.jpg" />
         
         {/* Additional SEO Meta Tags */}
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://onetechfuse.com" />
+        <link rel="canonical" href="https://onetechfuse.in" />
         
         {/* Schema.org Structured Data */}
         <script type="application/ld+json">
@@ -236,8 +324,8 @@ const Home = () => {
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "OneTechFuse",
-              "url": "https://onetechfuse.com",
-              "logo": "https://onetechfuse.com/images/logo.png",
+              "url": "https://onetechfuse.in",
+              "logo": "https://onetechfuse.in/images/logo.png",
               "description": "${seoDescription}",
               "sameAs": [
                 "https://www.linkedin.com/company/onetechfuse",
@@ -252,7 +340,7 @@ const Home = () => {
                 "@type": "ContactPoint",
                 "telephone": "+1-XXX-XXX-XXXX",
                 "contactType": "customer service",
-                "email": "contact@onetechfuse.com"
+                "email": "contact@onetechfuse.in"
               },
               "offers": {
                 "@type": "AggregateOffer",
@@ -280,43 +368,31 @@ const Home = () => {
       </Helmet>
       <Box>
         {/* Hero Section */}
-        <Box
-          sx={{
-            background: 'linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url("https://i.postimg.cc/qvnC3Zjb/digitalsolution.jpg")',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            color: 'white',
-            pt: { xs: 8, md: 12 },
-            pb: { xs: 6, md: 8 },
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
+        <HeroSection>
           <Container maxWidth="lg">
             <Grid container spacing={4} alignItems="center">
-              <Grid item xs={12} md={8}>
+              <Grid item xs={12} md={7}>
                 <Typography 
                   variant="h1" 
                   sx={{ 
-                    fontSize: { xs: '2.5rem', md: '4rem' },
+                    fontSize: { xs: '1.0rem', md: '3.0rem' },
                     fontWeight: 700,
-                    lineHeight: 1.2,
-                    mb: 2,
+                    mb: 3,
                   }}
                 >
-                  Digital Solutions for Modern Businesses
+                  Transform Your Business with Technology
                 </Typography>
                 <Typography 
-                  variant="h5" 
+                  variant="h5"
                   sx={{ 
-                    mb: 3, 
+                    maxWidth: '800px',
                     opacity: 0.9,
-                    fontWeight: 400,
-                    lineHeight: 1.5,
                     fontSize: { xs: '1.25rem', md: '1.5rem' },
+                    lineHeight: 1.3,
+                    mb: 4,
                   }}
                 >
-                  We help businesses transform their digital presence with cutting-edge technology solutions
+                  Custom software solutions that drive innovation and growth
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 2 }}>
                   <Button
@@ -343,10 +419,10 @@ const Home = () => {
                     sx={{
                       px: 4,
                       py: 1.5,
-                      fontSize: '1.125rem',
-                      fontWeight: 600,
-                      borderRadius: 2,
-                      borderWidth: 2,
+                      fontSize: '1.105rem',
+                      fontWeight: 400,
+                      borderRadius: 1.5,
+                      borderWidth: 1.5,
                     }}
                   >
                     Our Services
@@ -355,161 +431,78 @@ const Home = () => {
               </Grid>
             </Grid>
           </Container>
-        </Box>
+        </HeroSection>
 
         {/* Services Section */}
-        <Container maxWidth="lg" sx={{ py: { xs: 6, sm: 8, md: 12 } }}>
-          <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 8 } }}>
+        <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
+          <Container>
             <Typography
               variant="h2"
-              sx={{
-                fontSize: { xs: '2rem', md: '3rem' },
-                fontWeight: 700,
-                mb: 2,
-              }}
+              align="center"
+              gutterBottom
+              sx={{ mb: 6, color: 'primary.main' }}
             >
               Our Services
             </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                color: 'text.secondary',
-                maxWidth: '800px',
-                mx: 'auto',
-                fontWeight: 400,
-                fontSize: { xs: '1rem', md: '1.25rem' },
-                px: { xs: 2, sm: 0 },
-              }}
-            >
-              Comprehensive technology solutions to help your business thrive in the digital age
-            </Typography>
-          </Box>
-
-          <Grid container spacing={{ xs: 3, sm: 4 }}>
-            {services.map((service, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <StyledPaper onClick={() => handleServiceClick(service.title)}>
-                  <IconWrapper className="icon-wrapper">
-                    {service.icon}
-                  </IconWrapper>
-                  <Typography 
-                    variant="h5" 
-                    className="service-title"
-                    sx={{ 
-                      mb: 2,
-                      fontWeight: 600,
-                      fontSize: { xs: '1.5rem', md: '1.75rem' },
-                    }}
-                  >
-                    {service.title}
-                  </Typography>
-                  <Typography 
-                    color="text.secondary"
-                    className="service-description"
-                    sx={{ 
-                      mb: 3,
-                      fontSize: { xs: '1rem', md: '1.125rem' },
-                    }}
-                  >
-                    {service.description}
-                  </Typography>
-                  <List>
-                    {service.features.map((feature, idx) => (
-                      <ListItem key={idx} sx={{ px: 0, py: 0.5 }}>
-                        <ListItemIcon sx={{ minWidth: 36 }}>
-                          <CheckCircleIcon color="secondary" sx={{ fontSize: 20 }} />
-                        </ListItemIcon>
-                        <ListItemText 
-                          primary={feature}
-                          className="feature-text"
-                          sx={{ 
-                            '& .MuiListItemText-primary': {
-                              fontSize: { xs: '0.875rem', md: '1rem' },
-                            },
-                          }}
-                        />
-                      </ListItem>
-                    ))}
-                  </List>
-                </StyledPaper>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-
-        {/* Industries Section */}
-        <Box sx={{ bgcolor: 'grey.50', py: { xs: 6, sm: 8, md: 12 } }}>
-          <Container maxWidth="lg">
-            <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 8 } }}>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontSize: { xs: '2rem', md: '3rem' },
-                  fontWeight: 700,
-                  mb: 2,
-                }}
-              >
-                Industries We Serve
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  color: 'text.secondary',
-                  maxWidth: '800px',
-                  mx: 'auto',
-                  fontWeight: 400,
-                  fontSize: { xs: '1rem', md: '1.25rem' },
-                  px: { xs: 2, sm: 0 },
-                }}
-              >
-                Tailored solutions for various industries to meet their unique needs
-              </Typography>
-            </Box>
-
-            <Grid container spacing={{ xs: 3, sm: 4 }}>
-              {industries.map((industry, index) => (
+            <Grid container spacing={4}>
+              {services.map((service, index) => (
                 <Grid item xs={12} sm={6} md={4} key={index}>
-                  <Card
-                    sx={{
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      transition: 'all 0.3s ease-in-out',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: '0 12px 32px rgba(0, 0, 0, 0.1)',
-                      },
-                    }}
-                  >
-                    <CardContent sx={{ p: 4 }}>
-                      <Box
-                        sx={{
-                          color: 'primary.main',
-                          mb: 2,
-                          '& svg': {
-                            fontSize: '2.5rem',
-                          },
-                        }}
-                      >
-                        {industry.icon}
+                  <StyledPaper onClick={() => handleServiceClick(service.title)}>
+                    <IconWrapper className="icon-wrapper">
+                      {service.icon}
+                    </IconWrapper>
+                    <Typography
+                      variant="h5"
+                      className="service-title"
+                      gutterBottom
+                      sx={{ color: 'primary.main' }}
+                    >
+                      {service.title}
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" paragraph>
+                      {service.description}
+                    </Typography>
+                    <List dense>
+                      {service.features.map((feature, idx) => (
+                        <ListItem key={idx} disableGutters>
+                          <ListItemIcon sx={{ minWidth: 32 }}>
+                            <CheckCircleIcon color="secondary" sx={{ fontSize: 20 }} />
+                          </ListItemIcon>
+                          <ListItemText primary={feature} />
+                        </ListItem>
+                      ))}
+                    </List>
+                  </StyledPaper>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </Box>
+
+        {/* Why Choose Us Section with Images */}
+        <Box sx={{ py: 8, backgroundColor: 'grey.50' }}>
+          <Container>
+            <Typography
+              variant="h2"
+              align="center"
+              gutterBottom
+              sx={{ mb: 6, color: 'primary.main' }}
+            >
+              Why Choose Us
+            </Typography>
+            <Grid container spacing={4}>
+              {whyChooseUs.map((item, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                  <Card sx={{ height: '100%', textAlign: 'center' }}>
+                    <CardContent>
+                      <Box sx={{ mb: 2 }}>
+                        {item.icon}
                       </Box>
-                      <Typography
-                        variant="h5"
-                        sx={{
-                          mb: 2,
-                          fontWeight: 600,
-                          fontSize: { xs: '1.5rem', md: '1.75rem' },
-                        }}
-                      >
-                        {industry.title}
+                      <Typography variant="h6" gutterBottom color="primary">
+                        {item.title}
                       </Typography>
-                      <Typography
-                        color="text.secondary"
-                        sx={{
-                          fontSize: { xs: '1rem', md: '1.125rem' },
-                        }}
-                      >
-                        {industry.description}
+                      <Typography variant="body2" color="text.secondary">
+                        {item.description}
                       </Typography>
                     </CardContent>
                   </Card>
@@ -519,63 +512,45 @@ const Home = () => {
           </Container>
         </Box>
 
-        {/* Why Choose Us Section */}
-        <Container maxWidth="lg" sx={{ py: { xs: 6, sm: 8, md: 12 } }}>
-          <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 8 } }}>
+        {/* Industries Section */}
+        <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
+          <Container>
             <Typography
               variant="h2"
-              sx={{
-                fontSize: { xs: '2rem', md: '3rem' },
-                fontWeight: 700,
-                mb: 2,
-              }}
+              align="center"
+              gutterBottom
+              sx={{ mb: 6, color: 'primary.main' }}
             >
-              Why Choose Us
+              Industries We Serve
             </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                color: 'text.secondary',
-                maxWidth: '800px',
-                mx: 'auto',
-                fontWeight: 400,
-                fontSize: { xs: '1rem', md: '1.25rem' },
-                px: { xs: 2, sm: 0 },
-              }}
-            >
-              Our commitment to excellence and innovation sets us apart
-            </Typography>
-          </Box>
-
-          <Grid container spacing={{ xs: 3, sm: 4 }}>
-            {whyChooseUs.map((item, index) => (
-              <Grid item xs={12} sm={6} md={3} key={index}>
-                <Box sx={{ textAlign: 'center' }}>
-                  {item.icon}
-                  <Typography 
-                    variant="h5" 
-                    sx={{ 
-                      my: 2, 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.5rem', md: '1.75rem' },
-                    }}
-                  >
-                    {item.title}
-                  </Typography>
-                  <Typography 
-                    color="text.secondary"
-                    sx={{
-                      fontSize: { xs: '1rem', md: '1.125rem' },
-                      px: { xs: 2, sm: 0 },
-                    }}
-                  >
-                    {item.description}
-                  </Typography>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+            <Grid container spacing={4}>
+              {industries.map((industry, index) => (
+                <Grid item xs={12} sm={6} md={4} key={index}>
+                  <IndustryCard>
+                    <IndustryImage>
+                      <img
+                        src={industry.image}
+                        alt={industry.title}
+                        className="industry-image"
+                      />
+                      <IndustryIcon className="industry-icon">
+                        {industry.icon}
+                      </IndustryIcon>
+                    </IndustryImage>
+                    <IndustryContent>
+                      <Typography variant="h5" gutterBottom color="primary" sx={{ fontWeight: 600 }}>
+                        {industry.title}
+                      </Typography>
+                      <Typography variant="body1" color="text.secondary">
+                        {industry.description}
+                      </Typography>
+                    </IndustryContent>
+                  </IndustryCard>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </Box>
 
         {/* Stats Section */}
         <Box sx={{ bgcolor: 'primary.main', color: 'white', py: { xs: 6, sm: 8, md: 12 } }}>
