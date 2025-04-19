@@ -187,46 +187,47 @@ const Home = () => {
   const seoDescription = 'OneTechFuse - Leading provider of custom software development, Salesforce solutions, mobile apps, and enterprise IT services. Transform your business with our innovative technology solutions and expert consulting services.';
 
   const handleServiceClick = (service: string) => {
-    navigate('/contact');
+    const path = `/services/${service.toLowerCase().replace(/\s+/g, '-')}`;
+    navigate(path);
   };
 
   const services = [
     {
-      title: 'Frontend Development',
+      title: 'Web Development',
       icon: <CodeIcon />,
-      description: 'Modern and responsive frontend solutions using React, Angular, Vue.js and other cutting-edge technologies.',
-      features: ['Responsive Design', 'Modern Frameworks', 'Performance Optimization'],
+      description: 'Custom web solutions tailored to your business needs with modern technologies.',
+      features: ['Custom Development', 'Responsive Design', 'Performance Optimization'],
     },
     {
-      title: 'Backend Development',
-      icon: <DatabaseIcon />,
-      description: 'Robust backend solutions with Node.js, Python, Java, and other server-side technologies.',
-      features: ['API Development', 'Database Design', 'Server Architecture'],
-    },
-    {
-      title: 'UI/UX Design',
-      icon: <PsychologyIcon />,
-      description: 'User-centered design solutions that create engaging and intuitive digital experiences.',
-      features: ['User Research', 'Wireframing', 'Interactive Prototypes'],
-    },
-    {
-      title: 'Cloud Solutions',
+      title: 'Salesforce Solutions',
       icon: <CloudIcon />,
-      description: 'Expert cloud consulting and implementation services for AWS, Azure, and Google Cloud.',
-      features: ['Cloud Migration', 'DevOps', 'Scalable Architecture'],
+      description: 'Expert Salesforce consulting, implementation, and customization services.',
+      features: ['Implementation', 'Customization', 'Integration'],
     },
     {
-      title: 'E-Commerce Development',
+      title: 'Mobile Development',
+      icon: <MobileIcon />,
+      description: 'Native and cross-platform mobile applications for exceptional experiences.',
+      features: ['iOS Development', 'Android Development', 'Cross-platform'],
+    },
+    {
+      title: 'E-Commerce Solutions',
       icon: <EcommerceIcon />,
-      description: 'Custom e-commerce solutions that drive sales and enhance customer experience.',
-      features: ['Shopping Cart', 'Payment Gateway', 'Inventory Management'],
+      description: 'Scalable e-commerce platforms that drive sales and engagement.',
+      features: ['Online Store', 'Payment Integration', 'Inventory Management'],
     },
     {
-      title: 'Web Maintenance',
-      icon: <ExpertiseIcon />,
-      description: 'Comprehensive web maintenance services to keep your applications running smoothly.',
-      features: ['Regular Updates', 'Security Patches', '24/7 Support'],
-    }
+      title: 'Database Solutions',
+      icon: <DatabaseIcon />,
+      description: 'Robust database design and management for optimal data organization.',
+      features: ['Data Modeling', 'Performance Tuning', 'Migration Services'],
+    },
+    {
+      title: 'API Development',
+      icon: <ApiIcon />,
+      description: 'RESTful and GraphQL APIs for seamless system integration.',
+      features: ['API Design', 'Documentation', 'Security'],
+    },
   ];
 
   const industries = [
