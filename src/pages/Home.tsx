@@ -38,6 +38,7 @@ import {
   School as EducationIcon,
   Factory as ManufacturingIcon,
   Business as BusinessIcon,
+  SmartToy as SmartToyIcon,
 } from '@mui/icons-material';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -182,7 +183,12 @@ const Home = () => {
     'enterprise IT solutions',
     'business process automation',
     'system integration services',
-    'technology consulting'
+    'technology consulting',
+    'AI agents development',
+    'artificial intelligence solutions',
+    'task automation',
+    'intelligent workflows',
+    'custom AI development'
   ].join(', ');
 
   const seoDescription = 'OneTechFuse - Leading provider of custom software development, Salesforce solutions, mobile apps, and enterprise IT services. Transform your business with our innovative technology solutions and expert consulting services.';
@@ -216,6 +222,18 @@ const Home = () => {
         'Android Development',
         'Cross-Platform Apps',
         'App Maintenance',
+      ],
+    },
+    {
+      title: 'AI Agents',
+      description: 'Leverage custom AI agents to automate tasks and enhance business operations.',
+      icon: <PsychologyIcon />,
+      image: 'https://ktorbrdptkhds1wu.public.blob.vercel-storage.com/onetechfuseAiAgent-7fXwfAtgIQZUhKPbAfl71TkN3WoTGH.png',
+      features: [
+        'Task Automation',
+        'Intelligent Workflows',
+        'Natural Language Processing',
+        'Custom AI Solutions',
       ],
     },
     {

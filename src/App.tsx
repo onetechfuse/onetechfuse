@@ -21,6 +21,7 @@ import Services from './pages/Services';
 import Industries from './pages/Industries';
 import ApiDevelopment from './pages/services/ApiDevelopment';
 import EcommerceSolutions from './pages/services/EcommerceSolutions';
+import AiAgents from './pages/services/AiAgents';
 import NotFound from './pages/NotFound';
 
 const App = () => {
@@ -67,6 +68,7 @@ const App = () => {
           <Route path="/industries" element={<Industries />} />
           <Route path="/services/web-development" element={<WebDevelopment />} />
           <Route path="/services/mobile-development" element={<MobileDevelopment />} />
+          <Route path="/services/ai-agents" element={<AiAgents />} />
           <Route path="/services/salesforce-solutions" element={<SalesforceSolutions />} />
           <Route path="/services/api-development" element={<ApiDevelopment />} />
           <Route path="/services/ecommerce-solutions" element={<EcommerceSolutions />} />
