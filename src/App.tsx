@@ -8,6 +8,7 @@ import theme from './theme';
 // Components
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
+import WhatsAppButton from './components/common/WhatsAppButton';
 
 // Pages
 import Home from './pages/Home';
@@ -77,6 +78,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <WhatsAppButton phoneNumber="9627056436" />
       </Router>
     </ThemeProvider>
   );
